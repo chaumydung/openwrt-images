@@ -1,0 +1,10 @@
+{
+  "_purpose": "Wave-based sitemap rollout (PRD 4.3, docs/SEO.md 5). Each wave lists device slugs to include in sitemap.xml: either the string \"featured\" (resolves to data/seo/featured-devices.json) or an explicit slug array. Append new waves as GSC indexing health allows (<=100 device pages/week in month one); adding a wave is a data change, not a code change.",
+  "waves": [
+    {
+      "id": 1,
+      "note": "launch wave: homepage + featured + legal",
+      "deviceSlugs": "featured"
+    }
+  ]
+}
