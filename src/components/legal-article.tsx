@@ -12,14 +12,14 @@ export function LegalArticle({
   sections: LegalSection[]
 }) {
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">
-      <h1 className="text-3xl font-bold text-slate-900">{title}</h1>
-      <p className="mt-2 text-sm text-slate-600">Last updated: {updated}</p>
+    <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-14 sm:px-6">
+      <h1 className="text-3xl font-bold tracking-tight text-slate-900">{title}</h1>
+      <p className="mt-3 font-mono text-xs uppercase tracking-widest text-slate-500">Last updated: {updated}</p>
       {sections.map((section) => (
         <section key={section.heading}>
           <h2 className="mt-10 text-xl font-semibold text-slate-900">{section.heading}</h2>
           {section.paragraphs.map((text, i) => (
-            <p key={i} className="mt-3 leading-relaxed text-slate-600">
+            <p key={i} className="mt-4 text-base/7 text-slate-600">
               {text}
             </p>
           ))}

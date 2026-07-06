@@ -12,11 +12,14 @@ export default function DeviceNotFound() {
       </p>
       <Link
         href="/"
-        className="mt-6 inline-block rounded-[6px] bg-sky-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+        className="mt-6 inline-block rounded-md bg-sky-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
       >
         Search for your device
       </Link>
-      <Link href="/" className="mt-3 text-sm text-sky-700 hover:underline">
+      <Link
+        href="/"
+        className="mt-3 text-sm text-slate-900 underline decoration-slate-300 underline-offset-2 hover:text-sky-700 hover:decoration-sky-600"
+      >
         Back to the homepage
       </Link>
     </main>

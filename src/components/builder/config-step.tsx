@@ -68,7 +68,7 @@ export default function ConfigStep({ config, onField, showAllErrors, summary, su
                     type="button"
                     aria-pressed={show}
                     onClick={() => setRevealed((r) => ({ ...r, [field]: !show }))}
-                    className="shrink-0 rounded-[6px] border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                    className="shrink-0 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                   >
                     {show ? 'Hide' : 'Show'}
                   </button>
@@ -115,7 +115,7 @@ export default function ConfigStep({ config, onField, showAllErrors, summary, su
         type="button"
         onClick={onBuild}
         disabled={submitting}
-        className="mt-5 inline-flex items-center gap-2 rounded-[6px] bg-sky-700 px-6 py-2.5 text-base font-medium text-white hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 disabled:opacity-40"
+        className="mt-5 inline-flex items-center gap-2 rounded-md bg-sky-600 px-6 py-2.5 text-base font-medium text-white hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:opacity-40"
       >
         {submitting ? 'Submitting…' : 'Build firmware'}
       </button>

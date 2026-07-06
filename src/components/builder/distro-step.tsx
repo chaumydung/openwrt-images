@@ -21,8 +21,8 @@ export default function DistroStep({ distros, value, onChange }: Props) {
         {distros.map((d) => (
           <label
             key={d.id}
-            className={`flex cursor-pointer flex-col gap-1 rounded-lg border bg-white p-4 ${
-              value === d.id ? 'border-sky-700 ring-1 ring-sky-700' : 'border-slate-200 hover:border-slate-300'
+            className={`flex cursor-pointer flex-col gap-1 rounded-lg border bg-white p-4 transition-colors ${
+              value === d.id ? 'border-sky-600 ring-1 ring-sky-600' : 'border-slate-200 hover:border-sky-600'
             }`}
           >
             <span className="flex items-center gap-2">
@@ -35,7 +35,7 @@ export default function DistroStep({ distros, value, onChange }: Props) {
                 className="accent-sky-700"
               />
               <span className="text-base font-semibold text-slate-900">{d.label}</span>
-              <span className="ml-auto rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-xs text-slate-600">
+              <span className="ml-auto rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-mono text-xs text-slate-600">
                 {d.version}
               </span>
             </span>

@@ -5,6 +5,7 @@
 // terminal-style log stream with auto-scroll, artifact download card / failure hint card.
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { TerminalWindow } from '@/components/terminal-window'
 import { trackEvent } from '@/lib/analytics'
 import {
   POLL_INTERVAL_MS,
@@ -23,14 +24,16 @@ type RequestError = { httpStatus: number; message: string; signInUrl?: string }
 
 const cardClass = 'rounded-lg border border-slate-200 bg-white'
 const primaryButtonClass =
-  'inline-flex items-center gap-2 rounded-[6px] bg-sky-700 px-4 py-2 font-medium text-white hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700'
+  'inline-flex items-center gap-2 rounded-md bg-sky-600 px-4 py-2 font-medium text-white hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600'
 const secondaryButtonClass =
-  'inline-flex items-center gap-2 rounded-[6px] border border-slate-300 bg-white px-4 py-2 font-medium text-slate-900 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700'
+  'inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-4 py-2 font-medium text-slate-900 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600'
 
 function StatusBadge({ status }: { status: BuildView['status'] }) {
   const badge = statusBadge(status)
   return (
-    <span className={`inline-flex items-center gap-2 font-mono text-sm font-semibold ${badge.textClass}`}>
+    <span
+      className={`inline-flex items-center gap-2 rounded-full border border-current/30 px-2.5 py-0.5 font-mono text-xs font-semibold ${badge.textClass}`}
+    >
       <span aria-hidden="true" className={`h-2 w-2 rounded-full ${badge.dotClass}`} />
       {badge.label}
     </span>
@@ -87,19 +90,21 @@ function LogStream({ view }: { view: BuildView }) {
 
   return (
     <section className="mt-6" aria-label="Build log">
-      <div
-        ref={boxRef}
-        onScroll={() => {
-          const box = boxRef.current
-          if (box) stickToBottom.current = box.scrollHeight - box.scrollTop - box.clientHeight < 16
-        }}
-        aria-live="polite"
-        className="max-h-96 overflow-y-auto rounded-lg bg-slate-900 p-4"
-      >
-        <pre className="whitespace-pre-wrap break-words font-mono text-[13px] leading-relaxed text-slate-200">
-          {view.log ?? placeholder}
-        </pre>
-      </div>
+      <TerminalWindow title="imagebuilder — build.log">
+        <div
+          ref={boxRef}
+          onScroll={() => {
+            const box = boxRef.current
+            if (box) stickToBottom.current = box.scrollHeight - box.scrollTop - box.clientHeight < 16
+          }}
+          aria-live="polite"
+          className="max-h-[60vh] overflow-y-auto p-4"
+        >
+          <pre className="whitespace-pre-wrap break-words font-mono text-[13px] leading-relaxed text-slate-200">
+            {view.log ?? placeholder}
+          </pre>
+        </div>
+      </TerminalWindow>
       {!view.log && view.logUrl && (
         <a href={view.logUrl} target="_blank" rel="noopener noreferrer" className={`mt-3 ${secondaryButtonClass}`}>
           View full log on GitHub Actions
@@ -118,9 +123,12 @@ function ArtifactCard({ view }: { view: BuildView }) {
   const filename = artifactFilename(artifact.url)
   const expiresAt = artifact.expiresAt ?? view.artifactExpiresAt
   return (
-    <section className={`mt-6 p-5 ${cardClass}`} aria-label="Firmware download">
-      <h2 className="text-xl font-semibold text-slate-900">Your firmware is ready</h2>
-      <p className="mt-2">
+    <section className={`mt-6 p-5 sm:p-6 ${cardClass}`} aria-label="Firmware download">
+      <h2 className="flex items-center gap-2.5 text-xl font-semibold text-slate-900">
+        <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 rounded-full bg-green-700" />
+        Your firmware is ready
+      </h2>
+      <p className="mt-4">
         <a href={artifact.url} className={`${primaryButtonClass} px-6 py-3 text-base`} download>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4" aria-hidden="true">
             <path d="M8 2v8m0 0 3.5-3.5M8 10 4.5 6.5M2.5 13.5h11" strokeLinecap="round" strokeLinejoin="round" />
@@ -153,7 +161,7 @@ function ArtifactCard({ view }: { view: BuildView }) {
       {artifact.sha256 && (
         <div className="mt-4">
           <p className="text-sm text-slate-600">Verify the download before flashing:</p>
-          <pre className="mt-2 overflow-x-auto rounded-[6px] bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-200">
+          <pre className="mt-2 overflow-x-auto rounded-md border border-ink-border bg-ink p-3 font-mono text-xs leading-relaxed text-slate-200">
             {`$ sha256sum ${filename}\n${artifact.sha256}  ${filename}`}
           </pre>
         </div>
@@ -308,10 +316,13 @@ export function BuildStatus({ id }: { id: string }) {
 
   return (
     <>
-      <div className="mt-4 flex flex-wrap items-center gap-4">
+      <div className={`mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-5 ${cardClass}`}>
         <StatusBadge status={view.status} />
+        <span className="min-w-0 truncate font-mono text-xs text-slate-600" title={view.id}>
+          {view.id}
+        </span>
         {view.status === 'queued' && view.queuePosition !== null && (
-          <span className="font-mono text-sm text-slate-600">{queueLabel(view.queuePosition)}</span>
+          <span className="ml-auto font-mono text-sm text-slate-600">{queueLabel(view.queuePosition)}</span>
         )}
       </div>
       <LogStream view={view} />

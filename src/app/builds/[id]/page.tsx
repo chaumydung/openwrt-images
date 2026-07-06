@@ -15,8 +15,8 @@ export default async function BuildPage({ params }: { params: Promise<{ id: stri
   const { id } = await params
   return (
     <div className="flex-1 bg-slate-50 text-slate-900">
-      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-        <nav aria-label="Breadcrumb">
+      <div className="border-b border-slate-200 bg-white">
+        <nav aria-label="Breadcrumb" className="mx-auto w-full max-w-4xl px-4 py-3 sm:px-6">
           <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate-600">
             <li>
               <Link href="/" className="hover:text-sky-700 hover:underline">
@@ -29,8 +29,10 @@ export default async function BuildPage({ params }: { params: Promise<{ id: stri
             </li>
           </ol>
         </nav>
-        <h1 className="mt-4 text-3xl font-bold tracking-tight">Build status</h1>
-        <p className="mt-1 font-mono text-xs text-slate-600">{id}</p>
+      </div>
+      <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6">
+        <p className="font-mono text-xs uppercase tracking-widest text-sky-700">Build job</p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight">Build status</h1>
         <BuildStatus id={id} />
       </main>
     </div>

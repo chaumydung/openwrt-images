@@ -60,9 +60,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-const h2Class = 'text-xl font-semibold text-slate-900'
+const kickerClass = 'font-mono text-xs uppercase tracking-widest text-sky-700'
+const h2Class = 'mt-2 text-2xl font-bold tracking-tight text-slate-900'
 const cardClass = 'rounded-lg border border-slate-200 bg-white'
-const thClass = 'px-3 py-2 text-left font-semibold text-slate-900'
+const thClass = 'px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500'
+const dataLinkClass =
+  'text-slate-900 underline decoration-slate-300 underline-offset-2 hover:text-sky-700 hover:decoration-sky-600'
 
 function BuildLabel({ build }: { build: CatalogBuild }) {
   return (
@@ -130,12 +133,12 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
   }
 
   return (
-    <div className="flex-1 bg-slate-50 text-slate-900">
+    <div className="flex-1 bg-white text-slate-900">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
-      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-        {/* 1. Breadcrumb */}
-        <nav aria-label="Breadcrumb">
+      {/* 1. Breadcrumb band */}
+      <div className="border-b border-slate-200 bg-slate-50">
+        <nav aria-label="Breadcrumb" className="mx-auto w-full max-w-6xl px-4 py-3 sm:px-6">
           <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate-600">
             <li>
               <Link href="/" className="hover:text-sky-700 hover:underline">
@@ -154,30 +157,37 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
             </li>
           </ol>
         </nav>
-
-        {/* 2. H1 + key-spec summary */}
-        <header className="mt-4">
-          <h1 className="text-3xl font-bold tracking-tight">
+      </div>
+      <main>
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        {/* 2. H1 + key-spec stat tiles */}
+        <header className="py-10">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
             {name} {distro} Firmware
           </h1>
           {specs && (specs.cpu || specs.ramMb || specs.flashMb) && (
-            <p className="mt-3 flex flex-wrap gap-2 text-xs">
+            <dl className="mt-6 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
               {specs.cpu && (
-                <span className="rounded-[6px] border border-slate-200 bg-white px-2 py-1 font-mono">CPU {specs.cpu}</span>
+                <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+                  <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">CPU</dt>
+                  <dd className="mt-1 font-mono text-sm font-semibold text-slate-900">{specs.cpu}</dd>
+                </div>
               )}
               {specs.ramMb && (
-                <span className="rounded-[6px] border border-slate-200 bg-white px-2 py-1 font-mono">
-                  {withUnit(specs.ramMb, 'MB')} RAM
-                </span>
+                <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+                  <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">RAM</dt>
+                  <dd className="mt-1 font-mono text-xl font-semibold text-slate-900">{withUnit(specs.ramMb, 'MB')}</dd>
+                </div>
               )}
               {specs.flashMb && (
-                <span className="rounded-[6px] border border-slate-200 bg-white px-2 py-1 font-mono">
-                  {withUnit(specs.flashMb, 'MB')} flash
-                </span>
+                <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+                  <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">Flash</dt>
+                  <dd className="mt-1 font-mono text-xl font-semibold text-slate-900">{withUnit(specs.flashMb, 'MB')}</dd>
+                </div>
               )}
-            </p>
+            </dl>
           )}
-          <p className="mt-4 text-sm leading-6 text-slate-600">
+          <p className="mt-6 max-w-3xl text-base/7 text-slate-600">
             The {name} is supported by {descriptionDistros(device.builds)} on the{' '}
             <span className="font-mono">{build.target}</span> target. {allImages.length}{' '}
             {allImages.length === 1 ? 'firmware image is' : 'firmware images are'} available from the official{' '}
@@ -190,6 +200,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
         {/* 3. Specifications (omitted entirely when no ToH specs exist for this device) */}
         {rows.length > 0 && (
           <section className="mt-10">
+            <p className={kickerClass}>Specs</p>
             <h2 className={h2Class}>Specifications</h2>
             <div className={`mt-3 overflow-x-auto ${cardClass}`}>
               <table className="w-full text-sm">
@@ -213,6 +224,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
 
         {/* 4. Supported firmware versions matrix */}
         <section className="mt-10">
+          <p className={kickerClass}>Build matrix</p>
           <h2 className={h2Class}>Supported firmware versions</h2>
           <div className={`mt-3 overflow-x-auto ${cardClass}`}>
             <table className="w-full text-sm">
@@ -240,6 +252,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
 
         {/* 5. Download images */}
         <section className="mt-10">
+          <p className={kickerClass}>Downloads</p>
           <h2 className={h2Class}>Download images</h2>
           {/* prebuilt-images slot (PRD 5): this site's prebuilt image variants (R2 metadata +
               date-prefixed names); renders nothing when the device has no prebuilt data. */}
@@ -266,7 +279,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
                           <td className="px-3 py-2">
                             <a
                               href={upstreamImageUrl(b, img.name)}
-                              className="inline-flex items-start gap-1.5 font-mono text-xs break-all text-sky-700 hover:underline"
+                              className={`inline-flex items-start gap-1.5 font-mono text-xs break-all ${dataLinkClass}`}
                             >
                               <svg
                                 viewBox="0 0 16 16"
@@ -312,6 +325,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
         {/* 6+7. Default packages & installation */}
         {(packageGroups.length > 0 || hasSysupgrade || hasFactory || hasRamBoot || shaExample) && (
           <section className="mt-10">
+            <p className={kickerClass}>Packages &amp; install</p>
             <h2 className={h2Class}>Default packages &amp; installation</h2>
 
             {packageGroups.length > 0 && (
@@ -378,7 +392,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
               {shaExample && (
                 <li>
                   Verify your download against the published checksum before flashing:
-                  <pre className="mt-2 overflow-x-auto rounded-[6px] bg-slate-900 p-3 font-mono text-xs leading-5 text-slate-200">
+                  <pre className="mt-2 overflow-x-auto rounded-md border border-ink-border bg-ink p-3 font-mono text-xs leading-5 text-slate-200">
                     {`$ sha256sum ${shaExample.name}\n${shaExample.sha256}  ${shaExample.name}`}
                   </pre>
                 </li>
@@ -387,24 +401,30 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
           </section>
         )}
 
-        {/* 8. CTA → builder with device prefilled */}
-        <section className={`mt-10 ${cardClass} p-6`}>
-          <h2 className={h2Class}>Build custom firmware</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
-            Need more than the default image for the {name}? Pick your packages — LuCI apps, themes, VPN clients — set
-            the basics, and get a ready-to-flash {distro} image assembled from official packages in minutes.
-          </p>
-          <Link
-            href={`/?device=${slug}#builder`}
-            className="mt-4 inline-block rounded-[6px] bg-sky-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
-          >
-            Customize firmware for this device
-          </Link>
+        </div>
+
+        {/* 8. CTA → builder with device prefilled (full-width accent band) */}
+        <section className="mt-12 border-y border-sky-200 bg-sky-600/10">
+          <div className="mx-auto w-full max-w-6xl px-4 py-12 text-center sm:px-6">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900">Build custom firmware</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-base/7 text-slate-600">
+              Need more than the default image for the {name}? Pick your packages — LuCI apps, themes, VPN clients —
+              set the basics, and get a ready-to-flash {distro} image assembled from official packages in minutes.
+            </p>
+            <Link
+              href={`/?device=${slug}#builder`}
+              className="mt-6 inline-block rounded-md bg-sky-600 px-6 py-3 text-base font-medium text-white hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+            >
+              Customize firmware for this device
+            </Link>
+          </div>
         </section>
 
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         {/* 9. Sibling-device internal links */}
         {(vendorSiblings.length > 0 || targetSiblings.length > 0) && (
-          <section className="mt-10">
+          <section className="mt-12">
+            <p className={kickerClass}>Related</p>
             <h2 className={h2Class}>Related devices</h2>
             {vendorSiblings.length > 0 && (
               <>
@@ -412,7 +432,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
                 <ul className="mt-2 grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
                   {vendorSiblings.map((d) => (
                     <li key={d.slug}>
-                      <Link href={`/device/${d.slug}`} className="text-sm text-sky-700 hover:underline">
+                      <Link href={`/device/${d.slug}`} className={`text-sm ${dataLinkClass}`}>
                         {deviceName(d)} {titleDistro(d.builds)} firmware
                       </Link>
                     </li>
@@ -428,7 +448,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
                 <ul className="mt-2 grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
                   {targetSiblings.map((d) => (
                     <li key={d.slug}>
-                      <Link href={`/device/${d.slug}`} className="text-sm text-sky-700 hover:underline">
+                      <Link href={`/device/${d.slug}`} className={`text-sm ${dataLinkClass}`}>
                         {deviceName(d)} {titleDistro(d.builds)} firmware
                       </Link>
                     </li>
@@ -440,12 +460,13 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
         )}
 
         {/* 10. Upstream & source (GPL) */}
-        <section className="mt-10 border-t border-slate-200 pt-6">
+        <section className="mt-12 border-t border-slate-200 py-8">
+          <p className={kickerClass}>Upstream</p>
           <h2 className={h2Class}>Upstream &amp; source</h2>
           <ul className="mt-3 space-y-1.5 text-sm">
             {upstreamLinks.map(([url, b]) => (
               <li key={url}>
-                <a href={url} className="inline-flex items-center gap-1.5 text-sky-700 hover:underline">
+                <a href={url} className={`inline-flex items-center gap-1.5 ${dataLinkClass}`}>
                   downloads.{b.distro}.org — {b.target} {b.version}
                   <svg
                     viewBox="0 0 16 16"
@@ -461,7 +482,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
               </li>
             ))}
             <li>
-              <a href="https://openwrt.org/toh/start" className="inline-flex items-center gap-1.5 text-sky-700 hover:underline">
+              <a href="https://openwrt.org/toh/start" className={`inline-flex items-center gap-1.5 ${dataLinkClass}`}>
                 OpenWrt Table of Hardware
                 <svg
                   viewBox="0 0 16 16"
@@ -481,6 +502,7 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
             The complete corresponding source code is available from those projects under the GPL.
           </p>
         </section>
+        </div>
       </main>
     </div>
   )

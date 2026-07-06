@@ -152,13 +152,14 @@ export default function Builder({ distros, presets }: { distros: DistroOption[];
   }
 
   return (
-    <div className="mt-6 rounded-lg border border-slate-200 bg-white">
+    <div className="rounded-xl border border-slate-200 bg-white">
       {/* Step indicator */}
       <nav aria-label="Builder steps" className="border-b border-slate-200 px-4 py-3 sm:px-6">
         <ol className="flex flex-wrap gap-x-5 gap-y-2">
           {STEPS.map((s) => {
             const current = s === state.step
             const enabled = canEnterStep(s, sel)
+            const done = s < state.step && stepComplete(s, sel)
             return (
               <li key={s}>
                 <button
@@ -166,17 +167,27 @@ export default function Builder({ distros, presets }: { distros: DistroOption[];
                   disabled={!enabled}
                   aria-current={current ? 'step' : undefined}
                   onClick={() => goToStep(s)}
-                  className={`inline-flex items-center gap-2 text-sm disabled:opacity-40 ${
-                    current ? 'font-medium text-sky-700' : 'text-slate-600 hover:text-slate-900'
+                  className={`inline-flex items-center gap-2 rounded-md text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:opacity-40 ${
+                    current ? 'font-medium text-sky-700' : done ? 'text-slate-900 hover:text-sky-700' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   <span
                     className={`inline-flex h-5 w-5 items-center justify-center rounded-full border font-mono text-xs ${
-                      current ? 'border-sky-700 bg-sky-700 text-white' : 'border-slate-300 text-slate-600'
+                      current
+                        ? 'border-sky-600 bg-sky-600 text-white'
+                        : done
+                          ? 'border-green-700 bg-green-700 text-white'
+                          : 'border-slate-300 text-slate-600'
                     }`}
                     aria-hidden="true"
                   >
-                    {s}
+                    {done ? (
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className="h-3 w-3">
+                        <path d="M3 8.5 6.5 12 13 4.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    ) : (
+                      s
+                    )}
                   </span>
                   {STEP_LABELS[s]}
                 </button>
@@ -241,7 +252,7 @@ export default function Builder({ distros, presets }: { distros: DistroOption[];
             <button
               type="button"
               onClick={() => goToStep((state.step - 1) as BuilderStep)}
-              className="rounded-[6px] border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
               Back
             </button>
@@ -253,7 +264,7 @@ export default function Builder({ distros, presets }: { distros: DistroOption[];
               type="button"
               disabled={!stepComplete(state.step, sel)}
               onClick={() => goToStep((state.step + 1) as BuilderStep)}
-              className="rounded-[6px] bg-sky-700 px-4 py-2 text-sm font-medium text-white hover:bg-sky-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 disabled:opacity-40"
+              className="rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:opacity-40"
             >
               Continue
             </button>
