@@ -6,12 +6,13 @@ export function siteUrl(): string {
   return process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 }
 
-function readJson<T>(relPath: string): T {
-  return JSON.parse(readFileSync(path.join(process.cwd(), relPath), 'utf8'))
+// Base dir is a literal so Turbopack's file tracing stays scoped to data/seo (avoids an NFT warning).
+function readJson<T>(file: string): T {
+  return JSON.parse(readFileSync(path.join(process.cwd(), 'data/seo', file), 'utf8'))
 }
 
 export function getFeaturedSlugs(): string[] {
-  return readJson<{ featured: string[] }>('data/seo/featured-devices.json').featured
+  return readJson<{ featured: string[] }>('featured-devices.json').featured
 }
 
 interface SitemapWave {
@@ -22,7 +23,7 @@ interface SitemapWave {
 
 /** Device slugs across all sitemap waves, deduplicated ("featured" resolves to the featured list). */
 export function getSitemapDeviceSlugs(): string[] {
-  const { waves } = readJson<{ waves: SitemapWave[] }>('data/seo/sitemap-waves.json')
+  const { waves } = readJson<{ waves: SitemapWave[] }>('sitemap-waves.json')
   const slugs = waves.flatMap((w) => (w.deviceSlugs === 'featured' ? getFeaturedSlugs() : w.deviceSlugs))
   return [...new Set(slugs)]
 }
