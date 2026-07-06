@@ -40,6 +40,10 @@ export function createNeonDb(): Db {
         const [row] = await db.select().from(builds).where(eq(builds.id, id)).limit(1)
         return row ?? null
       },
+      async getByExternalId(externalId: string): Promise<Build | null> {
+        const [row] = await db.select().from(builds).where(eq(builds.externalId, externalId)).limit(1)
+        return row ?? null
+      },
       async updateStatus(id: string, patch: BuildUpdate): Promise<Build | null> {
         const [row] = await db
           .update(builds)
