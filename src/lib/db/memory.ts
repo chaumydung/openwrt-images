@@ -52,6 +52,10 @@ export function createMemoryDb(): Db {
         const build = builds.get(id)
         return build ? structuredClone(build) : null
       },
+      async getByExternalId(externalId: string): Promise<Build | null> {
+        const build = [...builds.values()].find((b) => b.externalId === externalId)
+        return build ? structuredClone(build) : null
+      },
       async updateStatus(id: string, patch: BuildUpdate): Promise<Build | null> {
         const build = builds.get(id)
         if (!build) return null

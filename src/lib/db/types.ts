@@ -75,6 +75,8 @@ export interface Db {
   builds: {
     create(input: { userId: string; spec: BuildSpec }): Promise<Build>
     get(id: string): Promise<Build | null>
+    /** Looks a build up by its executor correlation id (webhook callbacks). */
+    getByExternalId(externalId: string): Promise<Build | null>
     updateStatus(id: string, patch: BuildUpdate): Promise<Build | null>
     listActiveCount(): Promise<number>
     activeByUser(userId: string): Promise<Build[]>
