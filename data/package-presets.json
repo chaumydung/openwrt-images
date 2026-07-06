@@ -1,0 +1,46 @@
+{
+  "presets": [
+    {
+      "id": "essentials",
+      "label": "Essentials",
+      "description": "LuCI web interface with HTTPS support.",
+      "packages": ["luci", "luci-ssl"]
+    },
+    {
+      "id": "usb-storage",
+      "label": "USB Storage",
+      "description": "Mount USB drives with ext4 and FAT filesystem support.",
+      "packages": ["kmod-usb-storage", "block-mount", "kmod-fs-ext4", "kmod-fs-vfat"]
+    },
+    {
+      "id": "wireguard",
+      "label": "WireGuard VPN",
+      "description": "WireGuard tunnel support with LuCI protocol integration.",
+      "packages": ["wireguard-tools", "luci-proto-wireguard", "kmod-wireguard"]
+    },
+    {
+      "id": "adblock",
+      "label": "Ad Blocking",
+      "description": "DNS-based ad blocking with LuCI management.",
+      "packages": ["adblock", "luci-app-adblock"]
+    },
+    {
+      "id": "sqm",
+      "label": "SQM QoS",
+      "description": "Smart queue management to reduce bufferbloat.",
+      "packages": ["sqm-scripts", "luci-app-sqm"]
+    },
+    {
+      "id": "ipv6",
+      "label": "IPv6",
+      "description": "IPv6 client support is already included in default builds; nothing extra to add.",
+      "packages": []
+    },
+    {
+      "id": "monitoring",
+      "label": "Monitoring",
+      "description": "Traffic and system statistics via collectd with LuCI graphs.",
+      "packages": ["luci-app-statistics", "collectd-mod-cpu", "collectd-mod-memory", "collectd-mod-interface", "collectd-mod-load"]
+    }
+  ]
+}
