@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T06:53:49.933Z",
+  "generatedAt": "2026-07-06T15:34:56.631Z",
   "distros": [
     {
       "id": "openwrt",
@@ -9,9 +9,9 @@
     },
     {
       "id": "immortalwrt",
-      "version": "25.12.0",
-      "targetCount": 94,
-      "deviceCount": 1890
+      "version": "25.12.1",
+      "targetCount": 11,
+      "deviceCount": 34
     }
   ]
 }

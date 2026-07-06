@@ -1,20 +1,37 @@
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
-import type { CatalogDevice, CatalogMeta } from './catalog-types'
+import type { CatalogDevice, CatalogMeta, DeviceSpecs, TargetMeta } from './catalog-types'
 
-export type { CatalogDevice, CatalogMeta } from './catalog-types'
+export type { CatalogBuild, CatalogDevice, CatalogImage, CatalogMeta, DeviceSpecs, TargetMeta } from './catalog-types'
+
+function readCatalogFile<T>(file: string): T {
+  return JSON.parse(readFileSync(path.join(process.cwd(), 'data/catalog', file), 'utf8')) as T
+}
 
 let cache: { devices: CatalogDevice[]; meta: CatalogMeta } | null = null
 
 export function getCatalog(): { devices: CatalogDevice[]; meta: CatalogMeta } {
   if (!cache) {
-    const dir = path.join(process.cwd(), 'data/catalog')
     cache = {
-      devices: JSON.parse(readFileSync(path.join(dir, 'devices.json'), 'utf8')),
-      meta: JSON.parse(readFileSync(path.join(dir, 'meta.json'), 'utf8')),
+      devices: readCatalogFile('devices.json'),
+      meta: readCatalogFile('meta.json'),
     }
   }
   return cache
+}
+
+let targetsCache: Record<string, TargetMeta> | null = null
+
+export function getTargetMeta(distro: string, version: string, target: string): TargetMeta | null {
+  const targets = (targetsCache ??= readCatalogFile<Record<string, TargetMeta>>('targets.json'))
+  return targets[`${distro}/${version}/${target}`] ?? null
+}
+
+let specsCache: Record<string, DeviceSpecs> | null = null
+
+export function getDeviceSpecs(slug: string): DeviceSpecs | null {
+  const specs = (specsCache ??= readCatalogFile<Record<string, DeviceSpecs>>('specs.json'))
+  return specs[slug] ?? null
 }
 
 export function searchDevices(devices: CatalogDevice[], query: string, limit = 20): CatalogDevice[] {

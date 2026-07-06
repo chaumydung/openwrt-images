@@ -45,12 +45,26 @@ export function normalizeProfiles(raw: RawProfilesJson, distro: DistroConfig, ve
     const vendor = title.vendor ?? ''
     const model = title.model ?? title.title ?? profileId
     const variant = title.variant ?? null
+    const images = (profile.images ?? []).map((img) => ({
+      name: img.name,
+      type: img.type,
+      ...(img.sha256 ? { sha256: img.sha256 } : {}),
+    }))
     devices.push({
       slug: slugify(vendor || 'generic', model, variant),
       vendor: vendor || 'Generic',
       model,
       variant,
-      builds: [{ distro: distro.id, version, target: raw.target, profileId }],
+      builds: [
+        {
+          distro: distro.id,
+          version,
+          target: raw.target,
+          profileId,
+          images,
+          ...(profile.device_packages?.length ? { devicePackages: profile.device_packages } : {}),
+        },
+      ],
     })
   }
   return devices
