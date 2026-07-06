@@ -7,6 +7,12 @@
 
 ## [未发布]
 
+### Added
+
+- Completed test matrix design covering 17 modules and 8 test dimensions
+- Generated 80 test cases covering 16 functional modules plus the PRD acceptance flows
+- Generated Playwright E2E automated tests covering all P0 acceptance-flow cases (full custom build, quota block, device-page CTA prefill, anonymous download rail, SSR crawlability)
+
 ## [0.0.1] - 2026-07-06
 
 ### Added
