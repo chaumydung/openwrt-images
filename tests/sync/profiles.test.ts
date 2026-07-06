@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { slugify, normalizeProfiles, mergeDevices, type RawProfilesJson } from '../../scripts/sync/profiles'
 
@@ -29,5 +29,16 @@ describe('mergeDevices', () => {
     const merged = mergeDevices([[a], [b]])
     expect(merged).toHaveLength(1)
     expect(merged[0].builds).toHaveLength(2)
+  })
+
+  it('warns when distinct devices collide on the same slug', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    const a = { slug: 's', vendor: 'VendorA', model: 'M1', variant: null, builds: [{ distro: 'openwrt' as const, version: '1', target: 't/s', profileId: 'p' }] }
+    const b = { slug: 's', vendor: 'VendorB', model: 'M2', variant: null, builds: [{ distro: 'immortalwrt' as const, version: '2', target: 't/s', profileId: 'q' }] }
+    const merged = mergeDevices([[a], [b]])
+    expect(merged).toHaveLength(1)
+    expect(merged[0].builds).toHaveLength(2)
+    expect(warn).toHaveBeenCalledOnce()
+    warn.mockRestore()
   })
 })

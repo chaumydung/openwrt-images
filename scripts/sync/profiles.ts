@@ -61,8 +61,16 @@ export function mergeDevices(batches: CatalogDevice[][]): CatalogDevice[] {
   for (const batch of batches) {
     for (const device of batch) {
       const existing = bySlug.get(device.slug)
-      if (existing) existing.builds.push(...device.builds)
-      else bySlug.set(device.slug, { ...device, builds: [...device.builds] })
+      if (existing) {
+        // Slug equality is our device identity; warn when vendor/model disagree so
+        // real collisions between distinct devices surface in sync output.
+        if (existing.vendor !== device.vendor || existing.model !== device.model) {
+          console.warn(
+            `[sync] slug collision: "${device.slug}" merges "${existing.vendor} ${existing.model}" and "${device.vendor} ${device.model}"`,
+          )
+        }
+        existing.builds.push(...device.builds)
+      } else bySlug.set(device.slug, { ...device, builds: [...device.builds] })
     }
   }
   return [...bySlug.values()].sort((a, b) => a.slug.localeCompare(b.slug))
