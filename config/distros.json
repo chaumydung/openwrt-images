@@ -1,0 +1,4 @@
+[
+  { "id": "openwrt", "label": "OpenWrt", "baseUrl": "https://downloads.openwrt.org" },
+  { "id": "immortalwrt", "label": "ImmortalWrt", "baseUrl": "https://downloads.immortalwrt.org" }
+]
