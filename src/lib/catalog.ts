@@ -3,6 +3,7 @@ import path from 'node:path'
 import type { CatalogDevice, CatalogMeta } from './catalog-types'
 
 export type { CatalogDevice, CatalogMeta } from './catalog-types'
+export { searchDevices } from './search'
 
 let cache: { devices: CatalogDevice[]; meta: CatalogMeta } | null = null
 
@@ -15,10 +16,4 @@ export function getCatalog(): { devices: CatalogDevice[]; meta: CatalogMeta } {
     }
   }
   return cache
-}
-
-export function searchDevices(devices: CatalogDevice[], query: string, limit = 20): CatalogDevice[] {
-  const q = query.trim().toLowerCase()
-  if (!q) return []
-  return devices.filter((d) => `${d.vendor} ${d.model} ${d.variant ?? ''}`.toLowerCase().includes(q)).slice(0, limit)
 }
