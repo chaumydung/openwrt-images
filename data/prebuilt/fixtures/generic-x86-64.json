@@ -1,0 +1,36 @@
+{
+  "slug": "generic-x86-64",
+  "distro": "openwrt",
+  "version": "25.12.5",
+  "buildDate": "2026-07-06",
+  "variants": [
+    {
+      "file": "07.06-GENERIC-SQUASHFS-COMBINED-EFI.IMG.GZ",
+      "type": "combined-efi",
+      "sha256": "8c4f0f4e2be0f6a9c1d5f3a2b7e8d90112233445566778899aabbccddeeff00",
+      "sizeBytes": 29360128,
+      "hintKey": "combined-efi"
+    },
+    {
+      "file": "07.06-GENERIC-SQUASHFS-COMBINED.IMG.GZ",
+      "type": "combined",
+      "sha256": "4b12d707ad34cdad0e53a6191e8c69eb6c0c09bfa6f9a0a05a65fc64a49096df",
+      "sizeBytes": 28311552,
+      "hintKey": "combined"
+    },
+    {
+      "file": "07.06-GENERIC-EXT4-COMBINED.IMG.GZ",
+      "type": "combined",
+      "sha256": "23e2538e8ab0eb52dfed1c65d608ecdb71ffd432dd54885da138ae67cd9e4461",
+      "sizeBytes": 30408704,
+      "hintKey": "combined"
+    },
+    {
+      "file": "07.06-GENERIC-TARGZ-ROOTFS.TAR.GZ",
+      "type": "rootfs",
+      "sha256": "4f191a9684949b15db02bb1ccdacaa8192ffb4598ce92e70b5337ca50df7912a",
+      "sizeBytes": 12582912,
+      "hintKey": "rootfs"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "gl-inet-gl-mt3000",
+  "distro": "openwrt",
+  "version": "25.12.5",
+  "buildDate": "2026-07-06",
+  "variants": [
+    {
+      "file": "07.06-GLINET_GL-MT3000-SQUASHFS-SYSUPGRADE.BIN",
+      "type": "sysupgrade",
+      "sha256": "1ffa6526ea099878e0fc520dc0473e95202c1a470b3eabcd2cd40e9c8eaab8c6",
+      "sizeBytes": 13631488,
+      "hintKey": "sysupgrade"
+    },
+    {
+      "file": "07.06-GLINET_GL-MT3000-INITRAMFS-KERNEL.BIN",
+      "type": "initramfs",
+      "sha256": "b31acd579ac5e36f32a18228d5bed5570bc6719d4a91dbee58eada0c38d4c5ac",
+      "sizeBytes": 11534336,
+      "hintKey": "initramfs"
+    }
+  ]
+}

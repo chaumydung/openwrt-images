@@ -20,6 +20,7 @@ import {
 } from '@/lib/device-page'
 import { getFeaturedSlugs, siteUrl } from '@/lib/seo'
 import { CopyButton } from './copy-button'
+import { PrebuiltImagesSection } from './prebuilt-images'
 
 export const revalidate = 86400 // daily, matching the pnpm sync cadence
 export const dynamicParams = true // non-featured slugs render on demand via ISR
@@ -240,9 +241,9 @@ export default async function DevicePage({ params }: { params: Promise<{ slug: s
         {/* 5. Download images */}
         <section className="mt-10">
           <h2 className={h2Class}>Download images</h2>
-          {/* prebuilt-images: slot for the prebuilt-pipeline unit (PRD 5) — it will render
-              this site's prebuilt image variants (R2 metadata + date-prefixed names) here. */}
-          <div id="prebuilt-images" />
+          {/* prebuilt-images slot (PRD 5): this site's prebuilt image variants (R2 metadata +
+              date-prefixed names); renders nothing when the device has no prebuilt data. */}
+          <PrebuiltImagesSection device={device} />
           {device.builds.map((b) => (
             <div key={`${b.distro}-${b.version}-${b.target}`} className="mt-4">
               <h3 className="text-sm font-semibold text-slate-900">
