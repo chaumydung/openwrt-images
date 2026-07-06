@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import BuilderSection from '@/components/builder/builder-section'
 import DeviceSearch from '@/components/device-search'
 import { getCatalog } from '@/lib/catalog'
 import { getFeaturedSlugs, siteUrl } from '@/lib/seo'
-import { buildHomeJsonLd, FAQ, FAQ_HEADING, HERO_SUBTITLE, HERO_TITLE, HOW_IT_WORKS, SECTIONS } from './home-content'
+import { buildHomeJsonLd, FAQ, FAQ_HEADING, HERO_SUBTITLE, HERO_TITLE, SECTIONS } from './home-content'
 
 const DISTRO_LABELS: Record<string, string> = { openwrt: 'OpenWrt', immortalwrt: 'ImmortalWrt' }
 
@@ -43,19 +44,8 @@ export default function Home() {
         </p>
       </section>
 
-      {/* builder-ui unit will replace the content of this section; keep id="builder" */}
-      <section id="builder" className="mt-14">
-        <h2 className="text-2xl font-semibold text-slate-900">How it works</h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-3">
-          {HOW_IT_WORKS.map((step, i) => (
-            <div key={step.title} className="rounded-lg border border-slate-200 bg-white p-5">
-              <p className="font-mono text-xs text-sky-700">Step {i + 1} of 3</p>
-              <h3 className="mt-2 text-base font-semibold text-slate-900">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Four-step firmware builder (id="builder" is the device page CTA anchor) */}
+      <BuilderSection />
 
       {/* Featured device internal links (SEO wave 1) */}
       <section className="mt-14">

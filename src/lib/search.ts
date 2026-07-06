@@ -38,12 +38,18 @@ function score(modelNorm: string, tokens: string[], compact: string, qTokens: st
   return compact.includes(qCompact) ? 4 : null
 }
 
-export function searchDevices(devices: CatalogDevice[], query: string, limit = 20): CatalogDevice[] {
+// Generic over any device-shaped record so the client-side builder can search the compact
+// device index (same fields, no image lists) without shipping the full catalog type.
+export function searchDevices<T extends Pick<CatalogDevice, 'vendor' | 'model' | 'variant'>>(
+  devices: T[],
+  query: string,
+  limit = 20,
+): T[] {
   const qTokens = tokenize(query)
   if (qTokens.length === 0) return []
   const qNorm = qTokens.join(' ')
   const qCompact = qTokens.join('')
-  const matches: { device: CatalogDevice; score: number; sortKey: string }[] = []
+  const matches: { device: T; score: number; sortKey: string }[] = []
   for (const device of devices) {
     const tokens = tokenize(`${device.vendor} ${device.model} ${device.variant ?? ''}`)
     const s = score(normalize(device.model), tokens, tokens.join(''), qTokens, qNorm, qCompact)
