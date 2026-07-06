@@ -46,3 +46,7 @@ yarn-error.log*
 next-env.d.ts
 .autodev/
 .worktrees/
+
+# playwright
+test-results/
+playwright-report/
