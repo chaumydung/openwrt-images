@@ -1,0 +1,190 @@
+# Daily prebuilt firmware pipeline (PRD §5).
+#
+# matrix job: reads data/prebuilt/config.json + data/catalog/devices.json (pnpm prebuilt:matrix)
+#   and emits one build per featured device × distro (combos without a build are skipped).
+# build jobs: ImageBuilder assembles the neutral default-package image, artifacts are renamed to
+#   the openwrt.ai-style date prefix (MM.DD-{VARIANT-UPPERCASED}), and uploaded to R2 under
+#   prebuilt/{slug}/{distro}/{YYYY-MM-DD}/ together with variant metadata; latest.json at
+#   prebuilt/{slug}/{distro}/latest.json is what the device page reads (src/lib/prebuilt.ts).
+# cleanup job: keeps the newest `retentionRuns` date directories per slug/distro, purges older.
+#
+# All matrix values come from repo-committed catalog data (no user input); they are still passed
+# to scripts through env, matching the script-injection hygiene of build-firmware.yml.
+# Required repo secrets: R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET.
+name: Prebuilt firmware
+
+on:
+  schedule:
+    - cron: '30 2 * * *' # daily, UTC off-peak
+  workflow_dispatch:
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.gen.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4 # version pinned by package.json packageManager
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Generate build matrix
+        id: gen
+        run: echo "matrix=$(pnpm -s prebuilt:matrix)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 30 # same hard cap as custom builds (PRD §6)
+    strategy:
+      fail-fast: false # one device failing must not stop the rest of the wave
+      max-parallel: 10 # leave headroom under the 20-concurrent-job account limit (PRD §5)
+      matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
+    env:
+      SLUG: ${{ matrix.slug }}
+      DISTRO: ${{ matrix.distro }}
+      VERSION: ${{ matrix.version }}
+      TARGET: ${{ matrix.target }}
+      PROFILE: ${{ matrix.profile }}
+      PACKAGES: ${{ matrix.packages }}
+    steps:
+      - name: Resolve ImageBuilder archive
+        id: ib
+        run: |
+          # downloads.openwrt.org and downloads.immortalwrt.org share the same URL layout.
+          case "$DISTRO" in
+            openwrt)     BASE="https://downloads.openwrt.org" ;;
+            immortalwrt) BASE="https://downloads.immortalwrt.org" ;;
+            *) echo "unsupported distro: $DISTRO" >&2; exit 1 ;;
+          esac
+          NAME="$DISTRO-imagebuilder-$VERSION-$(echo "$TARGET" | tr / -).Linux-x86_64"
+          DIR_URL="$BASE/releases/$VERSION/targets/$TARGET"
+          # Archive compression differs across releases (24.10+ ships .tar.zst, older .tar.xz).
+          for EXT in tar.zst tar.xz; do
+            if curl -sfLI "$DIR_URL/$NAME.$EXT" > /dev/null; then
+              {
+                echo "url=$DIR_URL/$NAME.$EXT"
+                echo "archive=$NAME.$EXT"
+                echo "dir=$NAME"
+              } >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "no ImageBuilder archive found under $DIR_URL" >&2
+          exit 1
+
+      # Same cache keys as build-firmware.yml, so prebuilt runs and custom builds share entries.
+      - name: Cache ImageBuilder archive
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.ib.outputs.archive }}
+          key: ${{ steps.ib.outputs.archive }}
+
+      - name: Download ImageBuilder (cache miss)
+        run: |
+          if [ ! -f "${{ steps.ib.outputs.archive }}" ]; then
+            curl -fL -o "${{ steps.ib.outputs.archive }}" "${{ steps.ib.outputs.url }}"
+          fi
+
+      - name: Extract ImageBuilder
+        # tar -a picks the decompressor from the extension (zstd and xz are preinstalled).
+        run: tar -xaf "${{ steps.ib.outputs.archive }}"
+
+      - name: Build image
+        working-directory: ${{ steps.ib.outputs.dir }}
+        run: make image PROFILE="$PROFILE" PACKAGES="$PACKAGES"
+
+      - name: Install rclone
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq rclone
+
+      - name: Rename artifacts, generate metadata, upload to R2
+        working-directory: ${{ steps.ib.outputs.dir }}
+        env:
+          RCLONE_CONFIG_R2_TYPE: s3
+          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
+          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          RCLONE_CONFIG_R2_ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          DATE_DIR=$(date -u +%Y-%m-%d)
+          FILE_PREFIX=$(date -u +%m.%d)
+          # Image names look like {distro}-{version}-{target-with-dashes}-{profile}-{variant};
+          # stripping this prefix leaves {profile}-{variant}, which uppercased + date-prefixed
+          # gives the openwrt.ai-style name, e.g. 07.06-GENERIC-SQUASHFS-COMBINED-EFI.IMG.GZ.
+          STRIP="$DISTRO-$VERSION-$(echo "$TARGET" | tr / -)-"
+          mkdir -p upload
+          VARIANTS='[]'
+          # Flashable images only — skip package indexes, manifests, and build metadata.
+          # Upstream image names never contain whitespace, so word splitting is safe here.
+          for SRC in $(find "bin/targets/$TARGET" -maxdepth 1 -type f \
+            \( -name '*.bin' -o -name '*.img' -o -name '*.img.gz' -o -name '*.itb' \
+               -o -name '*.vmdk' -o -name '*rootfs.tar.gz' \) | sort); do
+            BASE_NAME=$(basename "$SRC")
+            VARIANT="${BASE_NAME#"$STRIP"}"
+            NEW_NAME="$FILE_PREFIX-$(echo "$VARIANT" | tr '[:lower:]' '[:upper:]')"
+            cp "$SRC" "upload/$NEW_NAME"
+            # hintKey feeds the device page's variant-guidance copy (imageTypeHint).
+            case "$VARIANT" in
+              *sysupgrade*)          TYPE=sysupgrade ;;
+              *factory*)             TYPE=factory ;;
+              *initramfs*|*kernel*)  TYPE=initramfs ;;
+              *rootfs*)              TYPE=rootfs ;;
+              *combined-efi*)        TYPE=combined-efi ;;
+              *combined*)            TYPE=combined ;;
+              *sdcard*)              TYPE=sdcard ;;
+              *recovery*)            TYPE=recovery ;;
+              *)                     TYPE=other ;;
+            esac
+            SHA256=$(sha256sum "upload/$NEW_NAME" | cut -d' ' -f1)
+            SIZE=$(stat -c %s "upload/$NEW_NAME")
+            VARIANTS=$(jq --arg file "$NEW_NAME" --arg type "$TYPE" --arg sha "$SHA256" --argjson size "$SIZE" \
+              '. + [{file: $file, type: $type, sha256: $sha, sizeBytes: $size, hintKey: $type}]' <<< "$VARIANTS")
+          done
+          if [ "$VARIANTS" = '[]' ]; then
+            echo 'build produced no images' >&2
+            exit 1
+          fi
+          jq -n --arg slug "$SLUG" --arg distro "$DISTRO" --arg version "$VERSION" \
+                --arg date "$DATE_DIR" --argjson variants "$VARIANTS" \
+                '{slug: $slug, distro: $distro, version: $version, buildDate: $date, variants: $variants}' \
+                > latest.json
+          rclone copy upload "r2:$R2_BUCKET/prebuilt/$SLUG/$DISTRO/$DATE_DIR/"
+          rclone copyto latest.json "r2:$R2_BUCKET/prebuilt/$SLUG/$DISTRO/latest.json"
+
+  cleanup:
+    needs: build
+    # Prune even when some builds failed (fail-fast is off); skip only on cancellation.
+    if: ${{ always() && needs.build.result != 'cancelled' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4 # for data/prebuilt/config.json (retentionRuns)
+      - name: Install rclone
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq rclone
+      - name: Prune prebuilt runs beyond retention
+        env:
+          RCLONE_CONFIG_R2_TYPE: s3
+          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
+          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          RCLONE_CONFIG_R2_ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          KEEP=$(jq -r '.retentionRuns' data/prebuilt/config.json)
+          # Walk prebuilt/{slug}/{distro}/ and delete all but the newest $KEEP date directories
+          # (YYYY-MM-DD sorts lexicographically; latest.json is a file and is never listed).
+          rclone lsf "r2:$R2_BUCKET/prebuilt/" --dirs-only | while read -r SLUG_DIR; do
+            rclone lsf "r2:$R2_BUCKET/prebuilt/$SLUG_DIR" --dirs-only | while read -r DISTRO_DIR; do
+              rclone lsf "r2:$R2_BUCKET/prebuilt/$SLUG_DIR$DISTRO_DIR" --dirs-only \
+                | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}/$' | sort | head -n -"$KEEP" \
+                | while read -r OLD_DIR; do
+                    echo "purging prebuilt/$SLUG_DIR$DISTRO_DIR$OLD_DIR"
+                    rclone purge "r2:$R2_BUCKET/prebuilt/$SLUG_DIR$DISTRO_DIR$OLD_DIR"
+                  done
+            done
+          done

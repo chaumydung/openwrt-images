@@ -10,6 +10,7 @@
     "lint": "eslint",
     "test": "vitest run",
     "sync": "tsx scripts/sync/run.ts",
+    "prebuilt:matrix": "tsx scripts/prebuilt/gen-matrix.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate"
   },
