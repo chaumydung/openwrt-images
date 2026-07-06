@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Parallel-development worktrees are separate checkouts, not part of this tree's lint scope.
+    ".worktrees/**",
   ]),
 ]);
 
