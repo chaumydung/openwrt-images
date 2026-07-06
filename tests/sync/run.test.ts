@@ -10,13 +10,13 @@ const fakeRaw = (target: string) => ({
   version_number: 'v',
   target,
   arch_packages: 'aarch64_cortex-a53',
-  default_packages: [],
+  default_packages: ['base-files', 'busybox'],
   profiles: { p1: { titles: [{ vendor: 'Acme', model: 'R1' }], images: [] } },
 })
 
 describe('buildCatalog', () => {
   it('walks distros -> version -> targets -> profiles and merges devices', async () => {
-    const { devices, meta } = await buildCatalog(distros, {
+    const { devices, meta, targets } = await buildCatalog(distros, {
       discoverStableVersion: async () => '9.9.9',
       discoverTargets: async () => ['t/s'],
       fetchProfiles: async (_d, _v, target) => fakeRaw(target),
@@ -25,6 +25,11 @@ describe('buildCatalog', () => {
     expect(devices[0].builds).toHaveLength(2)
     expect(meta.distros).toHaveLength(2)
     expect(meta.distros[0]).toMatchObject({ version: '9.9.9', targetCount: 1, deviceCount: 1 })
+    expect(targets['openwrt/9.9.9/t/s']).toEqual({
+      defaultPackages: ['base-files', 'busybox'],
+      archPackages: 'aarch64_cortex-a53',
+    })
+    expect(Object.keys(targets)).toHaveLength(2) // 每发行版一个 target
   })
 
   it('skips targets without profiles.json', async () => {
