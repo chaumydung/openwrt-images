@@ -1,0 +1,189 @@
+# Custom firmware build pipeline (executor V1, PRD §6).
+#
+# Triggered by the website backend via workflow_dispatch (src/lib/executor/github.ts).
+# Contract with the executor:
+#   - run-name embeds the client-generated build_id — workflow_dispatch returns no run id,
+#     so the run name is the correlation key for status polling and webhook callbacks.
+#   - On success, firmware images + meta.json are uploaded to R2 under builds/<build_id>/;
+#     the executor reads {R2_PUBLIC_BASE_URL}/builds/<build_id>/meta.json
+#     (shape: {buildId, file, sha256, sizeBytes, expiresAt}).
+#   - On failure, nothing is uploaded; GitHub Actions keeps the full build log.
+#     Inputs and logs being public on this repo is an accepted product decision (PRD §6);
+#     the config whitelist below is the safety boundary (PRD §3.3).
+#
+# Required repo secrets: R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET.
+# Artifact expiry is enforced by an R2 lifecycle rule on the builds/ prefix (7 days);
+# meta.json's expiresAt mirrors it for display.
+name: Build firmware
+run-name: Build ${{ inputs.build_id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_id:
+        description: Client-generated correlation id
+        required: true
+      distro:
+        description: openwrt | immortalwrt
+        required: true
+      version:
+        description: Release version (e.g. 24.10.1)
+        required: true
+      target:
+        description: target/subtarget (e.g. ramips/mt7621)
+        required: true
+      profile:
+        description: Device profile id from profiles.json
+        required: true
+      packages:
+        description: Space-separated package list; a leading '-' removes a default package
+        required: false
+        default: ''
+      config_json:
+        description: 'JSON object with whitelisted keys only: hostname, timezone, lanIp, rootPassword, wifiSsid, wifiPassword'
+        required: false
+        default: '{}'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30 # hard cap (PRD §6); overrunning runs conclude as timed_out
+    # Inputs are always passed to scripts through env, never interpolated into run bodies
+    # (script-injection hygiene for a public repo).
+    env:
+      DISTRO: ${{ inputs.distro }}
+      VERSION: ${{ inputs.version }}
+      TARGET: ${{ inputs.target }}
+      PROFILE: ${{ inputs.profile }}
+      PACKAGES: ${{ inputs.packages }}
+      CONFIG_JSON: ${{ inputs.config_json }}
+      BUILD_ID: ${{ inputs.build_id }}
+    steps:
+      - name: Resolve ImageBuilder archive
+        id: ib
+        run: |
+          # downloads.openwrt.org and downloads.immortalwrt.org share the same URL layout.
+          case "$DISTRO" in
+            openwrt)     BASE="https://downloads.openwrt.org" ;;
+            immortalwrt) BASE="https://downloads.immortalwrt.org" ;;
+            *) echo "unsupported distro: $DISTRO" >&2; exit 1 ;;
+          esac
+          NAME="$DISTRO-imagebuilder-$VERSION-$(echo "$TARGET" | tr / -).Linux-x86_64"
+          DIR_URL="$BASE/releases/$VERSION/targets/$TARGET"
+          # Archive compression differs across releases (24.10+ ships .tar.zst, older .tar.xz).
+          for EXT in tar.zst tar.xz; do
+            if curl -sfLI "$DIR_URL/$NAME.$EXT" > /dev/null; then
+              {
+                echo "url=$DIR_URL/$NAME.$EXT"
+                echo "archive=$NAME.$EXT"
+                echo "dir=$NAME"
+              } >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "no ImageBuilder archive found under $DIR_URL" >&2
+          exit 1
+
+      # The ImageBuilder tarball (100-500 MB) rarely changes within a release — cache it so
+      # repeat builds for popular targets skip the download.
+      - name: Cache ImageBuilder archive
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.ib.outputs.archive }}
+          key: ${{ steps.ib.outputs.archive }}
+
+      - name: Download ImageBuilder (cache miss)
+        run: |
+          if [ ! -f "${{ steps.ib.outputs.archive }}" ]; then
+            curl -fL -o "${{ steps.ib.outputs.archive }}" "${{ steps.ib.outputs.url }}"
+          fi
+
+      - name: Extract ImageBuilder
+        # tar -a picks the decompressor from the extension (zstd and xz are preinstalled).
+        run: tar -xaf "${{ steps.ib.outputs.archive }}"
+
+      - name: Generate uci-defaults from whitelisted config
+        working-directory: ${{ steps.ib.outputs.dir }}
+        run: |
+          # Every field is extracted explicitly by name — unknown keys in config_json are
+          # silently ignored, which enforces the PRD §3.3 whitelist. There is deliberately
+          # no arbitrary-file upload and no raw uci-defaults passthrough.
+          mkdir -p files/etc/uci-defaults
+          OUT=files/etc/uci-defaults/99-custom-config
+          echo '#!/bin/sh' > "$OUT"
+
+          # sq: single-quote a value so it is inert inside the generated first-boot script.
+          sq() { printf "'%s'" "$(printf %s "$1" | sed "s/'/'\\\\''/g")"; }
+          get() { jq -r --arg k "$1" '.[$k] // empty' <<< "$CONFIG_JSON"; }
+
+          HOSTNAME_V=$(get hostname)
+          TIMEZONE_V=$(get timezone)
+          LAN_IP_V=$(get lanIp)
+          ROOT_PW_V=$(get rootPassword)
+          WIFI_SSID_V=$(get wifiSsid)
+          WIFI_PW_V=$(get wifiPassword)
+
+          if [ -n "$HOSTNAME_V" ]; then
+            echo "uci set system.@system[0].hostname=$(sq "$HOSTNAME_V")" >> "$OUT"
+          fi
+          if [ -n "$TIMEZONE_V" ]; then
+            # IANA zone name (e.g. Asia/Shanghai); LuCI derives the TZ string on save.
+            echo "uci set system.@system[0].zonename=$(sq "$TIMEZONE_V")" >> "$OUT"
+          fi
+          if [ -n "$LAN_IP_V" ]; then
+            echo "uci set network.lan.ipaddr=$(sq "$LAN_IP_V")" >> "$OUT"
+          fi
+          if [ -n "$WIFI_SSID_V" ]; then
+            echo "uci set wireless.@wifi-device[0].disabled='0'" >> "$OUT"
+            echo "uci set wireless.@wifi-iface[0].disabled='0'" >> "$OUT"
+            echo "uci set wireless.@wifi-iface[0].ssid=$(sq "$WIFI_SSID_V")" >> "$OUT"
+            if [ -n "$WIFI_PW_V" ]; then
+              echo "uci set wireless.@wifi-iface[0].encryption='psk2'" >> "$OUT"
+              echo "uci set wireless.@wifi-iface[0].key=$(sq "$WIFI_PW_V")" >> "$OUT"
+            fi
+          fi
+          echo 'uci commit' >> "$OUT"
+          if [ -n "$ROOT_PW_V" ]; then
+            echo "printf '%s\n' $(sq "root:$ROOT_PW_V") | chpasswd" >> "$OUT"
+          fi
+          echo 'exit 0' >> "$OUT"
+
+      - name: Build image
+        working-directory: ${{ steps.ib.outputs.dir }}
+        # Assembles precompiled packages into flashable images (typically 1-5 minutes).
+        run: make image PROFILE="$PROFILE" PACKAGES="$PACKAGES" FILES="$PWD/files"
+
+      - name: Install rclone
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq rclone
+
+      - name: Upload images and metadata to R2
+        working-directory: ${{ steps.ib.outputs.dir }}
+        env:
+          RCLONE_CONFIG_R2_TYPE: s3
+          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
+          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          RCLONE_CONFIG_R2_ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          mkdir -p upload
+          # Flashable images only — skip package indexes, manifests, and build metadata.
+          find "bin/targets/$TARGET" -maxdepth 1 -type f \
+            \( -name '*.bin' -o -name '*.img' -o -name '*.img.gz' -o -name '*.itb' \
+               -o -name '*.vmdk' -o -name '*rootfs.tar.gz' \) \
+            -exec cp {} upload/ \;
+          if [ -z "$(ls -A upload)" ]; then
+            echo 'build produced no images' >&2
+            exit 1
+          fi
+          # Primary artifact for meta.json: prefer the sysupgrade image, else the first image.
+          PRIMARY=$(ls upload | grep -i sysupgrade | head -n1)
+          if [ -z "$PRIMARY" ]; then PRIMARY=$(ls upload | head -n1); fi
+          SHA256=$(sha256sum "upload/$PRIMARY" | cut -d' ' -f1)
+          SIZE=$(stat -c %s "upload/$PRIMARY")
+          EXPIRES=$(date -u -d '+7 days' +%Y-%m-%dT%H:%M:%SZ)
+          jq -n --arg id "$BUILD_ID" --arg file "$PRIMARY" --arg sha "$SHA256" \
+                --argjson size "$SIZE" --arg exp "$EXPIRES" \
+                '{buildId: $id, file: $file, sha256: $sha, sizeBytes: $size, expiresAt: $exp}' \
+                > upload/meta.json
+          rclone copy upload "r2:$R2_BUCKET/builds/$BUILD_ID/"
