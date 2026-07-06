@@ -1,4 +1,5 @@
-// On-demand upstream package index: fetches and parses Packages manifests per (distro, version, target), cached daily via the Next fetch data cache.
+// On-demand upstream package index per (distro, version, target), cached daily via the Next fetch data
+// cache. Parses Debian-style Packages manifests (<= 24.10) with APK index.json fallback (25.12+).
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 
@@ -69,6 +70,20 @@ export async function resolveArch(distro: Distro, version: string, target: strin
   return profiles.arch_packages
 }
 
+// Parses an APK-repo index.json ({"packages": {"<name>": "<version>"}}), the only text index on
+// 25.12+ feeds. It carries no section/size/description, so section falls back to the feed name.
+export function parseApkIndex(text: string, feed: string): PackageEntry[] {
+  const index = JSON.parse(text) as { packages?: Record<string, string> }
+  return Object.entries(index.packages ?? {}).map(([name, version]) => ({
+    name,
+    version,
+    section: feed,
+    sizeBytes: 0,
+    description: '',
+    feed,
+  }))
+}
+
 // Parses a Debian-control-style Packages manifest (blank-line-separated records, "Field: value" lines).
 export function parsePackageIndex(text: string, feed: string): PackageEntry[] {
   const entries: PackageEntry[] = []
@@ -91,15 +106,26 @@ export function parsePackageIndex(text: string, feed: string): PackageEntry[] {
   return entries
 }
 
+// Fetches one feed directory's index: the rich Debian Packages manifest when present (<= 24.10),
+// otherwise the APK index.json that replaced it on 25.12+ feeds.
+async function fetchFeedIndex(feed: string, dirUrl: string): Promise<PackageEntry[]> {
+  try {
+    return parsePackageIndex(await (await fetchUpstream(`${dirUrl}/Packages`)).text(), feed)
+  } catch (err) {
+    if (!(err instanceof UpstreamNotFoundError)) throw err
+    return parseApkIndex(await (await fetchUpstream(`${dirUrl}/index.json`)).text(), feed)
+  }
+}
+
 export async function fetchPackageIndex(distro: Distro, version: string, target: string): Promise<PackageEntry[]> {
   const arch = await resolveArch(distro, version, target)
   const base = baseUrl(distro)
   const sources = [
     // Target-specific packages (incl. kmods) come first so they win the by-name dedupe below.
-    { feed: 'target', url: `${base}/releases/${version}/targets/${target}/packages/Packages` },
-    ...ARCH_FEEDS.map((feed) => ({ feed, url: `${base}/releases/${version}/packages/${arch}/${feed}/Packages` })),
+    { feed: 'target', dirUrl: `${base}/releases/${version}/targets/${target}/packages` },
+    ...ARCH_FEEDS.map((feed) => ({ feed, dirUrl: `${base}/releases/${version}/packages/${arch}/${feed}` })),
   ]
-  const parsed = await Promise.all(sources.map(async ({ feed, url }) => parsePackageIndex(await (await fetchUpstream(url)).text(), feed)))
+  const parsed = await Promise.all(sources.map(({ feed, dirUrl }) => fetchFeedIndex(feed, dirUrl)))
   const byName = new Map<string, PackageEntry>()
   for (const list of parsed) {
     for (const pkg of list) {
