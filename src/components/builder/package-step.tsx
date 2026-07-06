@@ -88,7 +88,7 @@ export default function PackageStep({ distro, version, target, packages, onChang
         <button
           type="button"
           onClick={() => setAttempt((a) => a + 1)}
-          className="mt-3 rounded-[6px] border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          className="mt-3 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
         >
           Retry
         </button>
@@ -127,9 +127,9 @@ export default function PackageStep({ distro, version, target, packages, onChang
               aria-pressed={applied}
               title={preset.description}
               onClick={() => onChange(applied ? removePreset(packages, preset.packages) : applyPreset(packages, preset.packages))}
-              className={`rounded-[6px] border px-3 py-1.5 text-sm font-medium disabled:opacity-40 ${
+              className={`rounded-full border px-3 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:opacity-40 ${
                 applied
-                  ? 'border-sky-700 bg-sky-700/10 text-sky-700'
+                  ? 'border-sky-600 bg-sky-600/10 text-sky-700'
                   : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
               }`}
             >
@@ -174,7 +174,7 @@ export default function PackageStep({ distro, version, target, packages, onChang
             <button
               type="button"
               onClick={() => setSearchLimit((n) => n + PAGE)}
-              className="mt-2 rounded-[6px] border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              className="mt-2 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
               Show {Math.min(PAGE, filtered.length - searchLimit)} more
             </button>
@@ -223,7 +223,7 @@ export default function PackageStep({ distro, version, target, packages, onChang
                       <button
                         type="button"
                         onClick={() => setVisibleCounts((counts) => ({ ...counts, [category.name]: visible + PAGE }))}
-                        className="ml-2 mt-2 rounded-[6px] border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                        className="ml-2 mt-2 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                       >
                         Show {Math.min(PAGE, category.packages.length - visible)} more
                       </button>
@@ -286,7 +286,7 @@ export default function PackageStep({ distro, version, target, packages, onChang
           <button
             type="button"
             onClick={addToken}
-            className="rounded-[6px] border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
           >
             Add
           </button>

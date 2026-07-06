@@ -9,7 +9,9 @@ import { CopyButton } from './copy-button'
 
 // Matches the visual rules of the upstream image tables in page.tsx.
 const cardClass = 'rounded-lg border border-slate-200 bg-white'
-const thClass = 'px-3 py-2 text-left font-semibold text-slate-900'
+const thClass = 'px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500'
+const dataLinkClass =
+  'text-slate-900 underline decoration-slate-300 underline-offset-2 hover:text-sky-700 hover:decoration-sky-600'
 
 function formatSize(bytes: number): string {
   const mb = bytes / (1024 * 1024)
@@ -56,7 +58,7 @@ export async function PrebuiltImagesSection({ device }: { device: CatalogDevice 
                       <td className="px-3 py-2">
                         <a
                           href={v.url}
-                          className="inline-flex items-start gap-1.5 font-mono text-xs break-all text-sky-700 hover:underline"
+                          className={`inline-flex items-start gap-1.5 font-mono text-xs break-all ${dataLinkClass}`}
                         >
                           <svg
                             viewBox="0 0 16 16"
