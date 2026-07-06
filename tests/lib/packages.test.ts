@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   categorize,
   fetchPackageIndex,
+  parseApkIndex,
   parsePackageIndex,
   resolveArch,
   UPSTREAM_TIMEOUT_MS,
@@ -57,6 +58,22 @@ describe('parsePackageIndex', () => {
     expect(parsed).toHaveLength(2)
     expect(parsed[0]).toMatchObject({ name: 'crlf-pkg', version: '2.0', sizeBytes: 7 })
     expect(parsed[1]).toMatchObject({ name: 'second', sizeBytes: 0 })
+  })
+})
+
+describe('parseApkIndex', () => {
+  it('parses the 25.12 APK index.json package map, deriving section from the feed', () => {
+    // Real shape captured from downloads.openwrt.org/releases/25.12.5/packages/aarch64_cortex-a53/base/index.json
+    const text = '{"version":2,"architecture":"aarch64_cortex-a53","packages":{"464xlat":"13","6in4":"29","adb":"5.0.2~6fe92d1a-r4"}}'
+    expect(parseApkIndex(text, 'base')).toEqual([
+      { name: '464xlat', version: '13', section: 'base', sizeBytes: 0, description: '', feed: 'base' },
+      { name: '6in4', version: '29', section: 'base', sizeBytes: 0, description: '', feed: 'base' },
+      { name: 'adb', version: '5.0.2~6fe92d1a-r4', section: 'base', sizeBytes: 0, description: '', feed: 'base' },
+    ])
+  })
+
+  it('returns no entries when the packages map is absent', () => {
+    expect(parseApkIndex('{"version":2,"architecture":"x86_64"}', 'luci')).toEqual([])
   })
 })
 
@@ -127,6 +144,18 @@ function stubIndexFetch(overrides: Record<string, string> = {}) {
   return fetchMock
 }
 
+// Stub for the 25.12+ layout: any /Packages URL is 404, only the given index.json bodies exist.
+function stubApkFetch(bodies: Record<string, string>) {
+  const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+    const url = String(input)
+    if (url.endsWith('/profiles.json')) return jsonResponse({ arch_packages: 'x86_64' })
+    const match = Object.entries(bodies).find(([suffix]) => url.endsWith(suffix))
+    return match ? textResponse(match[1]) : textResponse('missing', 404)
+  })
+  vi.stubGlobal('fetch', fetchMock)
+  return fetchMock
+}
+
 describe('fetchPackageIndex', () => {
   it('merges target and arch feeds, deduping by name with target priority', async () => {
     stubIndexFetch()
@@ -135,6 +164,30 @@ describe('fetchPackageIndex', () => {
     const dupe = packages.find((p) => p.name === 'dupe-pkg')!
     expect(dupe).toMatchObject({ version: 'target-1', feed: 'target' })
     expect(packages.find((p) => p.name === 'curl')!.feed).toBe('packages')
+  })
+
+  it('falls back to APK index.json per feed when Packages is 404 (25.12+ layout)', async () => {
+    const fetchMock = stubApkFetch({
+      '/releases/25.12.5/targets/x86/64/packages/index.json':
+        '{"version":2,"architecture":"x86_64","packages":{"kmod-fs-ext4":"6.6.104-r1"}}',
+      '/releases/25.12.5/packages/x86_64/base/index.json':
+        '{"version":2,"architecture":"x86_64","packages":{"zlib":"1.3.1-r1"}}',
+      '/releases/25.12.5/packages/x86_64/packages/index.json':
+        '{"version":2,"architecture":"x86_64","packages":{"curl":"8.9.1-r1"}}',
+      '/releases/25.12.5/packages/x86_64/luci/index.json':
+        '{"version":2,"architecture":"x86_64","packages":{"luci-app-sqm":"12.4"}}',
+    })
+    const packages = await fetchPackageIndex('openwrt', '25.12.5', 'x86/64')
+    expect(packages.map((p) => p.name).sort()).toEqual(['curl', 'kmod-fs-ext4', 'luci-app-sqm', 'zlib'])
+    expect(packages.find((p) => p.name === 'zlib')).toMatchObject({ version: '1.3.1-r1', section: 'base', feed: 'base' })
+    const urls = fetchMock.mock.calls.map((call) => String(call[0]))
+    expect(urls.filter((u) => u.endsWith('/Packages'))).toHaveLength(4)
+    expect(urls.filter((u) => u.endsWith('/index.json'))).toHaveLength(4)
+  })
+
+  it('rejects with UpstreamNotFoundError when both Packages and index.json are missing', async () => {
+    stubApkFetch({})
+    await expect(fetchPackageIndex('openwrt', '25.12.5', 'x86/64')).rejects.toBeInstanceOf(UpstreamNotFoundError)
   })
 })
 
