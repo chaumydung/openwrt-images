@@ -169,6 +169,8 @@ export type BuildRequestBody = {
   profileId: string
   packages?: string[]
   config?: Partial<BuilderConfig>
+  communityPackages?: string[]
+  uiLanguage?: string
 }
 
 /** Assembles the POST /api/builds body; null when the selection has no matching build. */
@@ -177,6 +179,8 @@ export function buildRequestBody(sel: {
   device: BuilderDevice | null
   packages: string[]
   config: BuilderConfig
+  communityPackages?: string[]
+  uiLanguage?: string
 }): BuildRequestBody | null {
   const build = selectedBuild(sel.device, sel.distro)
   if (!build) return null
@@ -193,6 +197,8 @@ export function buildRequestBody(sel: {
     if (value !== '') config[field] = value
   }
   if (Object.keys(config).length > 0) body.config = config
+  if (sel.communityPackages && sel.communityPackages.length > 0) body.communityPackages = sel.communityPackages
+  if (sel.uiLanguage && sel.uiLanguage !== 'en') body.uiLanguage = sel.uiLanguage
   return body
 }
 

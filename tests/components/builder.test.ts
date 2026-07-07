@@ -194,6 +194,33 @@ describe('package filtering and formatting', () => {
   })
 })
 
+describe('buildRequestBody community + language', () => {
+  const device = {
+    slug: 'x',
+    vendor: 'V',
+    model: 'M',
+    variant: null,
+    builds: [{ distro: 'openwrt' as const, version: '25.12.5', target: 'x86/64', profileId: 'generic' }],
+  }
+  const sel = { distro: 'openwrt' as const, device, packages: [], config: EMPTY_CONFIG }
+
+  it('includes communityPackages when non-empty', () => {
+    const body = buildRequestBody({ ...sel, communityPackages: ['openclash'], uiLanguage: 'en' })
+    expect(body?.communityPackages).toEqual(['openclash'])
+  })
+
+  it('omits communityPackages when empty and omits uiLanguage when en', () => {
+    const body = buildRequestBody({ ...sel, communityPackages: [], uiLanguage: 'en' })
+    expect(body?.communityPackages).toBeUndefined()
+    expect(body?.uiLanguage).toBeUndefined()
+  })
+
+  it('includes uiLanguage when not en', () => {
+    const body = buildRequestBody({ ...sel, communityPackages: [], uiLanguage: 'zh-cn' })
+    expect(body?.uiLanguage).toBe('zh-cn')
+  })
+})
+
 describe('render smoke', () => {
   it('DistroStep renders both distro cards with versions as radio inputs', () => {
     const html = renderToStaticMarkup(
