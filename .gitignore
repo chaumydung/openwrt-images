@@ -51,3 +51,6 @@ next-env.d.ts
 test-results/
 playwright-report/
 .retrospective/retro-state.json
+
+CLAUDE.md
+AGENTS.md
