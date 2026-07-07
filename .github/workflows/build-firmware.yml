@@ -69,6 +69,16 @@ jobs:
       COMMUNITY_PACKAGES: ${{ inputs.community_packages }}
       UI_LANGUAGE: ${{ inputs.ui_language }}
     steps:
+      # Checked out first and unconditionally: it must run before ImageBuilder is downloaded and
+      # extracted into this same workspace. actions/checkout@v4's prepare-existing-directory logic
+      # wipes everything at the workspace root when there is no existing .git — if checkout ran
+      # later (e.g. gated behind community_packages), it would delete the already-extracted
+      # ImageBuilder dir and the generated uci-defaults files out from under the later steps.
+      # Repo files (scripts/, data/, src/) land alongside the ImageBuilder's own
+      # openwrt-imagebuilder-* subdir with no path collision.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Resolve ImageBuilder archive
         id: ib
         run: |
@@ -158,12 +168,6 @@ jobs:
           fi
           echo 'exit 0' >> "$OUT"
 
-      # Community add-on resolution needs the repo's TS resolver plus the committed catalog/package data,
-      # which isn't checked out by default — earlier steps only need the downloaded ImageBuilder.
-      - name: Checkout repository
-        if: ${{ fromJSON(inputs.community_packages)[0] != null }}
-        uses: actions/checkout@v4
-
       - name: Resolve community add-ons
         if: ${{ fromJSON(inputs.community_packages)[0] != null }}
         run: |
@@ -176,11 +180,21 @@ jobs:
             exit 1
           fi
 
+          # --yes avoids an interactive "install tsx?" prompt on a fresh runner (no node_modules —
+          # a full `pnpm install` isn't needed since resolve-cli.ts and its imports only touch
+          # node:fs/node:path at runtime).
           COMMUNITY_IDS="$COMMUNITY_PACKAGES" IB_ARCH="$ARCH" IB_VERSION="$VERSION" \
-            npx tsx scripts/build/resolve-cli.ts > /tmp/community.json
+            npx --yes tsx scripts/build/resolve-cli.ts > /tmp/community.json
 
-          # feeds -> repositories.conf; opkg's check_signature is a file-wide toggle (not per-feed), so
-          # drop it when any selected feed has no signing key available in this ImageBuilder's keyring.
+          # feeds -> repositories.conf; opkg's check_signature is a file-wide toggle (not per-feed:
+          # opkg has no concept of "verify this src/gz line but not that one"), so drop it when any
+          # selected feed has no signing key available in this ImageBuilder's keyring. This disables
+          # signature verification for ALL feeds in this build, including the official upstream feeds
+          # re-added to repositories.conf by ImageBuilder — not just the unsigned community feed. This
+          # is a deliberate, file-wide trust-boundary decision (spec §7): we don't trust "any URL with
+          # a valid signature", we trust our own vetted community-package catalog (data/packages/community.json,
+          # curated and reviewed before merge). Making this per-feed is not possible with opkg's
+          # repositories.conf format.
           jq -r '.feeds[] | "src/gz \(.name) \(.url)"' /tmp/community.json >> "$IB_DIR/repositories.conf"
           if jq -e '[.feeds[] | select(.checkSignature == false)] | length > 0' /tmp/community.json > /dev/null; then
             sed -i '/^option check_signature/d' "$IB_DIR/repositories.conf"
