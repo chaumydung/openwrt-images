@@ -157,7 +157,7 @@ describe('GET /api/builds/[id]', () => {
   })
 
   it("returns 403 for another user's build", async () => {
-    const spec = { ...combo, profile: combo.profileId, packages: [], config: {} }
+    const spec = { ...combo, profile: combo.profileId, packages: [], config: {}, communityPackages: [], uiLanguage: 'en' }
     const foreign = await getDb().builds.create({ userId: 'someone-else', spec })
     expect((await get(foreign.id)).status).toBe(403)
   })

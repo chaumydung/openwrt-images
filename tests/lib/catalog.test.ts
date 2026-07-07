@@ -4,7 +4,7 @@ import type { CatalogDevice } from '../../src/lib/catalog'
 
 const dev = (slug: string, vendor: string, model: string): CatalogDevice => ({
   slug, vendor, model, variant: null,
-  builds: [{ distro: 'openwrt', version: '1', target: 't/s', profileId: 'p' }],
+  builds: [{ distro: 'openwrt', version: '1', target: 't/s', profileId: 'p', images: [] }],
 })
 
 const devices = [dev('gl-inet-gl-mt3000', 'GL.iNet', 'GL-MT3000'), dev('tp-link-archer-c7-v5', 'TP-Link', 'Archer C7')]
