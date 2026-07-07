@@ -155,7 +155,7 @@ function ArtifactCard({ view }: { view: BuildView }) {
       </dl>
       {expiresAt && (
         <p className="mt-4 rounded-[6px] border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-          Available for 7 days, until {formatExpiresAt(expiresAt)}. Download and keep a copy before it expires.
+          Available for 24 hours, until {formatExpiresAt(expiresAt)}. Download and keep a copy before it expires.
         </p>
       )}
       {artifact.sha256 && (
