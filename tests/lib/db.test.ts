@@ -67,7 +67,7 @@ describe('memory adapter: builds', () => {
     const updated = await db.builds.updateStatus(build.id, {
       status: 'success',
       externalId: 'run-7',
-      artifactUrl: 'https://r2.example/fw.img.gz',
+      artifactUrl: 'https://github.com/acme/owrt-builder/releases/download/build-run-7/fw.img.gz',
       artifactExpiresAt: new Date('2026-07-13T00:00:00Z'),
     })
     expect(updated).toMatchObject({ status: 'success', externalId: 'run-7' })

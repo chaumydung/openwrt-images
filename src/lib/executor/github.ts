@@ -1,8 +1,8 @@
 // GitHub Actions executor (V1, PRD §6): submits builds via workflow_dispatch on the public
 // build repo, correlates runs through a client-generated build_id embedded in the run name,
-// maps workflow-run states to ExecutorStatus, and reads artifact metadata from the
-// conventional R2 path {R2_PUBLIC_BASE_URL}/builds/{build_id}/meta.json written by the
-// workflow (.github/workflows/build-firmware.yml).
+// maps workflow-run states to ExecutorStatus, and reads artifact metadata from the GitHub
+// Release the workflow publishes per build (tag `build-{build_id}`) — the images and meta.json
+// are release assets, so no separate object store is needed (.github/workflows/build-firmware.yml).
 import { createHmac, randomUUID, timingSafeEqual } from 'node:crypto'
 import type { BuildArtifact, BuildSpec, Executor, ExecutorStatus } from './types'
 
@@ -21,7 +21,7 @@ type WorkflowRun = {
 // Shape of builds/{build_id}/meta.json as written by the workflow.
 type ArtifactMeta = { file: string; sha256?: string; sizeBytes?: number; expiresAt?: string }
 
-function env(key: 'BUILD_GITHUB_TOKEN' | 'BUILD_REPO' | 'R2_PUBLIC_BASE_URL'): string {
+function env(key: 'BUILD_GITHUB_TOKEN' | 'BUILD_REPO'): string {
   const value = process.env[key]
   if (!value) throw new Error(`${key} is not set`)
   return value
@@ -37,12 +37,14 @@ function githubHeaders(): Record<string, string> {
 }
 
 async function readArtifact(buildId: string): Promise<BuildArtifact | undefined> {
-  const base = env('R2_PUBLIC_BASE_URL')
-  const res = await fetch(`${base}/builds/${buildId}/meta.json`)
+  // The workflow publishes each build's images + meta.json as assets on a GitHub Release
+  // tagged `build-{buildId}`; asset download URLs are public and deterministic for a public repo.
+  const base = `https://github.com/${env('BUILD_REPO')}/releases/download/build-${buildId}`
+  const res = await fetch(`${base}/meta.json`)
   if (!res.ok) return undefined
   const meta = (await res.json()) as ArtifactMeta
   return {
-    url: `${base}/builds/${buildId}/${meta.file}`,
+    url: `${base}/${meta.file}`,
     sha256: meta.sha256,
     sizeBytes: meta.sizeBytes,
     expiresAt: meta.expiresAt,

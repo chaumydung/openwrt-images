@@ -1,0 +1,32 @@
+# Enforces the 7-day retention for custom-build artifacts (PRD §6): deletes `build-*` releases
+# (and their tags) older than 7 days. Runs daily; can also be triggered manually.
+name: Prune build artifacts
+
+on:
+  schedule:
+    - cron: '30 3 * * *' # daily, low-traffic UTC hour
+  workflow_dispatch:
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # delete releases + tags
+    steps:
+      - name: Delete build-* releases older than 7 days
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          CUTOFF=$(date -u -d '-7 days' +%s)
+          # List every build-* release with its publish timestamp; delete the ones past the cutoff.
+          gh release list --repo "$REPO" --limit 1000 --json tagName,publishedAt \
+            --jq '.[] | select(.tagName | startswith("build-")) | [.tagName, .publishedAt] | @tsv' \
+          | while IFS=$'\t' read -r TAG PUBLISHED; do
+              [ -z "$TAG" ] && continue
+              PUB_TS=$(date -u -d "$PUBLISHED" +%s 2>/dev/null || echo 0)
+              if [ "$PUB_TS" -gt 0 ] && [ "$PUB_TS" -lt "$CUTOFF" ]; then
+                echo "pruning $TAG (published $PUBLISHED)"
+                gh release delete "$TAG" --repo "$REPO" --cleanup-tag --yes
+              fi
+            done
