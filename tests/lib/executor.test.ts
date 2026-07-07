@@ -147,6 +147,21 @@ describe('GithubActionsExecutor', () => {
     expect(body.inputs.profile).toBe('xiaomi_mi-router-4a-gigabit')
     expect(body.inputs.packages).toBe('luci -ppp')
     expect(JSON.parse(body.inputs.config_json)).toEqual({ hostname: 'openwrt-test' })
+    expect(body.inputs.community_packages).toBe('[]')
+    expect(body.inputs.ui_language).toBe('en')
+  })
+
+  it('submit forwards community_packages and ui_language when set', async () => {
+    fetchMock.mockResolvedValueOnce(new Response(null, { status: 204 }))
+    await new GithubActionsExecutor().submit({
+      ...spec(['luci']),
+      communityPackages: ['openclash'],
+      uiLanguage: 'zh-cn',
+    })
+    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit]
+    const body = JSON.parse(init.body as string)
+    expect(body.inputs.community_packages).toBe('["openclash"]')
+    expect(body.inputs.ui_language).toBe('zh-cn')
   })
 
   it('submit throws on a non-2xx dispatch response', async () => {

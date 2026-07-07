@@ -24,6 +24,23 @@ describe('parseReleaseAssets', () => {
     expect(out.assets['luci-app-openclash']).toContain('luci-app-openclash_0.47.110_all.ipk')
     expect(out.assets['luci-i18n-openclash-zh-cn']).toContain('luci-i18n-openclash-zh-cn')
   })
+
+  it('does not let a same-prefix variant package win over the exact base match', () => {
+    // The variant appears before the exact asset in listing order, so a naive `.find` would
+    // pick it first; the exact base must still win.
+    const releaseWithVariant = {
+      tag_name: 'v0.47.110',
+      assets: [
+        {
+          name: 'luci-app-openclash-nftables_0.47.110_all.ipk',
+          browser_download_url: 'https://x/luci-app-openclash-nftables_0.47.110_all.ipk',
+        },
+        ...release.assets,
+      ],
+    }
+    const out = parseReleaseAssets(openclash as never, releaseWithVariant, ['zh-cn'])
+    expect(out.assets['luci-app-openclash']).toBe('https://x/luci-app-openclash_0.47.110_all.ipk')
+  })
 })
 
 describe('syncCommunity', () => {

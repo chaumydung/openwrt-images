@@ -7,8 +7,14 @@ type Release = { tag_name: string; assets: Asset[] }
 
 function pickAll(assets: Asset[], base: string): string | null {
   // Prefer the arch-independent `_all` package (ipk or apk); accept both name shapes seen in the wild.
-  const re = new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[-_].*(_all\\.ipk|-.*\\.apk|_all\\.apk)$`)
-  return assets.find((a) => re.test(a.name))?.browser_download_url ?? null
+  const escaped = base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const re = new RegExp(`^${escaped}[-_].*(_all\\.ipk|-.*\\.apk|_all\\.apk)$`)
+  const candidates = assets.filter((a) => re.test(a.name))
+  // A same-prefix variant package (e.g. base `luci-app-openclash` also matching
+  // `luci-app-openclash-nftables_..._all.ipk`) must not win over the exact base: an exact
+  // match's separator is immediately followed by the version, which starts with a digit.
+  const exact = candidates.find((a) => new RegExp(`^${escaped}[-_]\\d`).test(a.name))
+  return (exact ?? candidates[0])?.browser_download_url ?? null
 }
 
 export function parseReleaseAssets(

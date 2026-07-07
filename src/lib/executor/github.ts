@@ -69,6 +69,8 @@ export class GithubActionsExecutor implements Executor {
             profile: spec.profileId,
             packages: spec.packages.join(' '),
             config_json: JSON.stringify(spec.config),
+            community_packages: JSON.stringify(spec.communityPackages),
+            ui_language: spec.uiLanguage,
           },
         }),
       },
