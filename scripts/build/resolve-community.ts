@@ -19,7 +19,8 @@ function versionLineOf(version: string): string {
   return version.split('.').slice(0, 2).join('.')
 }
 
-// OpenWrt switched its ImageBuilder package format from ipk to apk starting with 25.12.
+// OpenWrt switched its ImageBuilder package format from ipk to apk on the 25.x release line
+// (major >= 25); 24.10 and every earlier line still use ipk.
 function packageFormat(versionLine: string): 'ipk' | 'apk' {
   return Number(versionLine.split('.')[0]) >= 25 ? 'apk' : 'ipk'
 }
@@ -70,12 +71,16 @@ function pickReleaseAsset(assets: Asset[], pkg: string, versionLine: string, for
   return match?.url ?? null
 }
 
-// Picks the per-arch tarball matching both the target arch and OpenWrt version line.
+// Picks the per-arch tarball matching both the target arch and OpenWrt version line. Matches the
+// combined `${arch}-openwrt-${versionLine}` substring in a single check rather than two independent
+// `.includes()` calls, because an arch name can be a substring of a sibling variant's name (e.g.
+// `arm_cortex-a9` is a prefix of `arm_cortex-a9_neon` and `arm_cortex-a9_vfpv3-d16`). The naming
+// convention joins arch to `-openwrt-` with a `-` while variant suffixes use `_`, so the combined
+// substring only ever appears in the exact-arch asset name.
 function pickTarball(assets: Asset[], arch: string, versionLine: string): string | null {
   const match = assets.find(
     (a) =>
-      a.name.includes(arch) &&
-      a.name.includes(`-openwrt-${versionLine}`) &&
+      a.name.includes(`${arch}-openwrt-${versionLine}`) &&
       a.name.endsWith('.tar.gz') &&
       !a.name.includes('SNAPSHOT'),
   )
@@ -117,6 +122,8 @@ export function resolveCommunity(
 
     if (c.sourceType === 'tarball') {
       // The inner ipks/apks get installed by name (c.packages, pushed above) after extraction.
+      // Per-arch tarballs bundle all UI languages, so c.i18nAvailable is informational only here —
+      // the resolver intentionally does no i18n asset selection for tarball components.
       const url = pickTarball(c.latest.assets, arch, versionLine)
       if (url) tarballUrls.push(url)
       continue

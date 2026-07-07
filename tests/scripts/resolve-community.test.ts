@@ -73,6 +73,20 @@ const mosdns = {
   ] },
 } as CommunityComponent
 
+// Regression fixture for the arch/versionLine substring collision: `arm_cortex-a9` is a real
+// substring of the `arm_cortex-a9_neon` subtarget (see data/catalog/targets.json), so a naive
+// two-`.includes()` match can return the variant asset instead of the exact-arch one when the
+// variant is listed first.
+const nikkiArchCollision = {
+  id: 'nikki', label: 'Nikki (Mihomo)', category: 'proxy', note: null, sourceType: 'tarball',
+  githubRepo: 'nikkinikki-org/OpenWrt-nikki', packages: ['luci-app-nikki'], extraDepends: ['dnsmasq-full'],
+  i18nAvailable: ['zh-cn', 'zh-tw', 'ru'],
+  latest: { version: 'v1.26.1', assets: [
+    { name: 'nikki_arm_cortex-a9_neon-openwrt-24.10.tar.gz', url: 'https://x/nikki_arm_cortex-a9_neon-openwrt-24.10.tar.gz' },
+    { name: 'nikki_arm_cortex-a9-openwrt-24.10.tar.gz', url: 'https://x/nikki_arm_cortex-a9-openwrt-24.10.tar.gz' },
+  ] },
+} as CommunityComponent
+
 describe('versionLineCovers', () => {
   it('handles an exact version line', () => {
     expect(versionLineCovers('22.03', '22.03')).toBe(true)
@@ -148,5 +162,11 @@ describe('resolveCommunity', () => {
     expect(out.tarballUrls).not.toContain('https://x/nikki_aarch64_cortex-a53-SNAPSHOT.tar.gz')
     expect(out.assetUrls).toEqual([])
     expect(out.packages).toEqual(expect.arrayContaining(['luci-app-nikki', 'luci-app-mosdns']))
+  })
+
+  it('nikki: does not pick a variant subtarget tarball (arm_cortex-a9_neon) when it is listed before the exact-arch match', () => {
+    const out = resolveCommunity([nikkiArchCollision], ['nikki'], 'en', 'arm_cortex-a9', '24.10.7')
+    expect(out.tarballUrls).toEqual(['https://x/nikki_arm_cortex-a9-openwrt-24.10.tar.gz'])
+    expect(out.tarballUrls).not.toContain('https://x/nikki_arm_cortex-a9_neon-openwrt-24.10.tar.gz')
   })
 })
