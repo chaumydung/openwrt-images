@@ -1,0 +1,113 @@
+{
+  "languages": ["en", "zh-cn", "zh-tw", "ru"],
+  "components": [
+    {
+      "id": "passwall",
+      "label": "PassWall",
+      "category": "proxy",
+      "note": null,
+      "sourceType": "github-release",
+      "githubRepo": "Openwrt-Passwall/openwrt-passwall",
+      "packages": ["luci-app-passwall"],
+      "extraDepends": ["dnsmasq-full"],
+      "i18nAvailable": ["zh-cn"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "passwall2",
+      "label": "PassWall 2",
+      "category": "proxy",
+      "note": null,
+      "sourceType": "github-release",
+      "githubRepo": "Openwrt-Passwall/openwrt-passwall2",
+      "packages": ["luci-app-passwall2"],
+      "extraDepends": ["dnsmasq-full"],
+      "i18nAvailable": ["zh-cn", "zh-tw", "ru"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "openclash",
+      "label": "OpenClash",
+      "category": "proxy",
+      "note": "The Mihomo core downloads on first run — the router needs internet access the first time you open OpenClash.",
+      "sourceType": "github-release",
+      "githubRepo": "vernesong/OpenClash",
+      "packages": ["luci-app-openclash"],
+      "extraDepends": ["dnsmasq-full", "coreutils-nohup"],
+      "i18nAvailable": ["zh-cn"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "homeproxy",
+      "label": "HomeProxy",
+      "category": "proxy",
+      "note": "In the ImmortalWrt feed; OpenWrt builds pull it from the ImmortalWrt package feed.",
+      "sourceType": "feed",
+      "feed": { "name": "immortalwrt_luci", "urlTemplate": "https://downloads.immortalwrt.org/releases/{version}/packages/{arch}/luci", "checkSignature": false },
+      "packages": ["luci-app-homeproxy"],
+      "extraDepends": [],
+      "i18nAvailable": ["zh-cn"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "nikki",
+      "label": "Nikki (Mihomo)",
+      "category": "proxy",
+      "note": null,
+      "sourceType": "github-release",
+      "githubRepo": "nikkinikki-org/OpenWrt-nikki",
+      "packages": ["luci-app-nikki"],
+      "extraDepends": ["dnsmasq-full"],
+      "i18nAvailable": ["zh-cn", "zh-tw", "ru"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "ssr-plus",
+      "label": "ShadowSocksR Plus+",
+      "category": "proxy",
+      "note": "Prebuilt packages are sourced from a vetted community aggregator; pinned and reviewed by us.",
+      "sourceType": "github-release",
+      "githubRepo": "fw876/helloworld",
+      "packages": ["luci-app-ssr-plus"],
+      "extraDepends": ["dnsmasq-full"],
+      "i18nAvailable": ["zh-cn"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "smartdns",
+      "label": "SmartDNS",
+      "category": "dns",
+      "note": null,
+      "sourceType": "feed",
+      "feed": { "name": "openwrt_packages", "urlTemplate": "https://downloads.openwrt.org/releases/{version}/packages/{arch}/packages", "checkSignature": false },
+      "packages": ["luci-app-smartdns"],
+      "extraDepends": [],
+      "i18nAvailable": ["zh-cn"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "mosdns",
+      "label": "MosDNS",
+      "category": "dns",
+      "note": null,
+      "sourceType": "github-release",
+      "githubRepo": "sbwml/luci-app-mosdns",
+      "packages": ["luci-app-mosdns"],
+      "extraDepends": [],
+      "i18nAvailable": ["zh-cn"],
+      "latest": { "version": null, "assets": {} }
+    },
+    {
+      "id": "argon-theme",
+      "label": "Argon theme",
+      "category": "theme",
+      "note": null,
+      "sourceType": "github-release",
+      "githubRepo": "jerrykuku/luci-theme-argon",
+      "packages": ["luci-theme-argon"],
+      "extraDepends": ["luci-compat"],
+      "i18nAvailable": [],
+      "latest": { "version": null, "assets": {} }
+    }
+  ]
+}
