@@ -1,5 +1,9 @@
 // Pure logic for the homepage firmware builder: client-side config validation mirroring
 // the /api/builds rules, package token operations, step completion, and request assembly.
+import type { CommunityComponent, CuratedCategory } from '@/lib/community-packages'
+
+export type { CuratedCategory }
+export type CommunityComponentSummary = Pick<CommunityComponent, 'id' | 'label' | 'category' | 'note'>
 
 export type DistroId = 'openwrt' | 'immortalwrt'
 
@@ -108,6 +112,11 @@ export function addPackageToken(list: string[], token: string): string[] {
 
 export function removePackageToken(list: string[], token: string): string[] {
   return list.filter((t) => t !== token)
+}
+
+/** Adds an id if absent, removes it if present (checkbox-style toggle for community add-ons). */
+export function toggleId(list: string[], id: string): string[] {
+  return list.includes(id) ? list.filter((x) => x !== id) : [...list, id]
 }
 
 export function applyPreset(list: string[], packages: string[]): string[] {

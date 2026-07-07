@@ -4,6 +4,7 @@
 import { Suspense } from 'react'
 import { HOW_IT_WORKS } from '@/app/home-content'
 import { getCatalog } from '@/lib/catalog'
+import { getCommunityComponents, getCuratedCategories, SUPPORTED_LANGUAGES } from '@/lib/community-packages'
 import { getPackagePresets } from '@/lib/package-presets'
 import Builder from './builder'
 import { DISTRO_LABELS } from './lib'
@@ -16,6 +17,9 @@ export default function BuilderSection() {
     version: d.version,
   }))
   const presets = getPackagePresets()
+  const curated = getCuratedCategories()
+  const community = getCommunityComponents().map((c) => ({ id: c.id, label: c.label, category: c.category, note: c.note }))
+  const languages = [...SUPPORTED_LANGUAGES]
 
   return (
     <>
@@ -44,7 +48,7 @@ export default function BuilderSection() {
       <section id="builder" className="border-y border-slate-200 bg-slate-50">
         <div className="mx-auto w-full max-w-4xl px-4 py-14 sm:px-6">
           <Suspense fallback={<BuilderFallback />}>
-            <Builder distros={distros} presets={presets} />
+            <Builder distros={distros} presets={presets} curated={curated} community={community} languages={languages} />
           </Suspense>
         </div>
       </section>

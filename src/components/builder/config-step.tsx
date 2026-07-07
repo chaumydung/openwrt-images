@@ -20,7 +20,15 @@ type Props = {
   config: BuilderConfig
   onField: (field: keyof BuilderConfig, value: string) => void
   showAllErrors: boolean
-  summary: { deviceName: string; distroLabel: string; version: string; build: DeviceBuildRef; packageCount: number }
+  summary: {
+    deviceName: string
+    distroLabel: string
+    version: string
+    build: DeviceBuildRef
+    packageCount: number
+    communityCount: number
+    uiLanguage: string
+  }
   submitting: boolean
   submitError: SubmitError | null
   onBuild: () => void
@@ -108,6 +116,16 @@ export default function ConfigStep({ config, onField, showAllErrors, summary, su
             <dt className="shrink-0 text-slate-600">Packages</dt>
             <dd className="text-slate-900">{summary.packageCount} selected</dd>
           </div>
+          <div className="flex gap-2">
+            <dt className="shrink-0 text-slate-600">Community add-ons</dt>
+            <dd className="text-slate-900">{summary.communityCount} selected</dd>
+          </div>
+          {summary.uiLanguage !== 'en' && (
+            <div className="flex gap-2">
+              <dt className="shrink-0 text-slate-600">UI language</dt>
+              <dd className="font-mono text-xs text-slate-900">{summary.uiLanguage}</dd>
+            </div>
+          )}
         </dl>
       </div>
 

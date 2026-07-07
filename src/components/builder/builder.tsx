@@ -18,9 +18,19 @@ import {
   selectedBuild,
   STEP_LABELS,
   stepComplete,
+  toggleId,
   validateConfig,
 } from './lib'
-import type { BuilderConfig, BuilderDevice, BuilderStep, DistroId, DistroOption, SubmitError } from './lib'
+import type {
+  BuilderConfig,
+  BuilderDevice,
+  BuilderStep,
+  CommunityComponentSummary,
+  CuratedCategory,
+  DistroId,
+  DistroOption,
+  SubmitError,
+} from './lib'
 
 const PackageStep = dynamic(() => import('./package-step'), {
   loading: () => (
@@ -36,6 +46,8 @@ type State = {
   device: BuilderDevice | null
   packages: string[]
   config: BuilderConfig
+  communityPackages: string[]
+  uiLanguage: string
 }
 
 type Action =
@@ -45,6 +57,8 @@ type Action =
   | { type: 'prefill-device'; device: BuilderDevice }
   | { type: 'set-packages'; packages: string[] }
   | { type: 'set-config'; field: keyof BuilderConfig; value: string }
+  | { type: 'toggle-community'; id: string }
+  | { type: 'set-language'; language: string }
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -63,12 +77,28 @@ function reducer(state: State, action: Action): State {
       return { ...state, packages: action.packages }
     case 'set-config':
       return { ...state, config: { ...state.config, [action.field]: action.value } }
+    case 'toggle-community':
+      return { ...state, communityPackages: toggleId(state.communityPackages, action.id) }
+    case 'set-language':
+      return { ...state, uiLanguage: action.language }
   }
 }
 
 const STEPS: BuilderStep[] = [1, 2, 3, 4]
 
-export default function Builder({ distros, presets }: { distros: DistroOption[]; presets: PackagePreset[] }) {
+export default function Builder({
+  distros,
+  presets,
+  curated,
+  community,
+  languages,
+}: {
+  distros: DistroOption[]
+  presets: PackagePreset[]
+  curated: CuratedCategory[]
+  community: CommunityComponentSummary[]
+  languages: string[]
+}) {
   const router = useRouter()
   const deviceParam = useSearchParams().get('device')
   const [state, dispatch] = useReducer(reducer, distros, (d) => ({
@@ -77,6 +107,8 @@ export default function Builder({ distros, presets }: { distros: DistroOption[];
     device: null,
     packages: [],
     config: EMPTY_CONFIG,
+    communityPackages: [],
+    uiLanguage: 'en',
   }))
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<SubmitError | null>(null)
@@ -225,6 +257,13 @@ export default function Builder({ distros, presets }: { distros: DistroOption[];
               packages={state.packages}
               onChange={(packages) => dispatch({ type: 'set-packages', packages })}
               presets={presets}
+              curated={curated}
+              community={community}
+              communityPackages={state.communityPackages}
+              onToggleCommunity={(id) => dispatch({ type: 'toggle-community', id })}
+              languages={languages}
+              uiLanguage={state.uiLanguage}
+              onLanguage={(language) => dispatch({ type: 'set-language', language })}
             />
           )}
           {state.step === 4 && build && state.device && (
@@ -238,6 +277,8 @@ export default function Builder({ distros, presets }: { distros: DistroOption[];
                 version: build.version,
                 build,
                 packageCount: state.packages.length,
+                communityCount: state.communityPackages.length,
+                uiLanguage: state.uiLanguage,
               }}
               submitting={submitting}
               submitError={submitError}

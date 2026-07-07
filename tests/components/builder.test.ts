@@ -3,6 +3,7 @@
 import { describe, expect, it } from 'vitest'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
+import CommunityStep from '../../src/components/builder/community-step'
 import DistroStep from '../../src/components/builder/distro-step'
 import {
   addPackageToken,
@@ -19,6 +20,7 @@ import {
   removePreset,
   selectedBuild,
   stepComplete,
+  toggleId,
   validateConfig,
   validateConfigField,
 } from '../../src/components/builder/lib'
@@ -221,6 +223,13 @@ describe('buildRequestBody community + language', () => {
   })
 })
 
+describe('community toggle', () => {
+  it('adds then removes an id', () => {
+    expect(toggleId([], 'openclash')).toEqual(['openclash'])
+    expect(toggleId(['openclash'], 'openclash')).toEqual([])
+  })
+})
+
 describe('render smoke', () => {
   it('DistroStep renders both distro cards with versions as radio inputs', () => {
     const html = renderToStaticMarkup(
@@ -230,5 +239,26 @@ describe('render smoke', () => {
     expect(html).toContain('ImmortalWrt')
     expect(html).toContain('25.12.5')
     expect(html).toContain('type="radio"')
+  })
+
+  it('CommunityStep renders the warning-styled add-ons region unselected, plus a neutral themes section', () => {
+    const html = renderToStaticMarkup(
+      createElement(CommunityStep, {
+        components: [
+          { id: 'openclash', label: 'OpenClash', category: 'proxy', note: 'Needs internet on first run.' },
+          { id: 'argon-theme', label: 'Argon theme', category: 'theme', note: null },
+        ],
+        selected: [],
+        onToggle: () => {},
+        languages: ['en', 'zh-cn'],
+        uiLanguage: 'en',
+        onLanguage: () => {},
+      }),
+    )
+    expect(html).toContain('Community add-ons')
+    expect(html).toContain('Community-maintained add-ons — you are responsible for how you use them.')
+    expect(html).toContain('Popular themes')
+    expect(html).toContain('English (default)')
+    expect(html).not.toContain('checked=""') // nothing pre-selected
   })
 })
