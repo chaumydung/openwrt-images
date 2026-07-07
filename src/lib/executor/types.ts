@@ -24,6 +24,10 @@ export type BuildSpec = {
   /** ImageBuilder package list; a leading `-` excludes a default package (e.g. `-ppp`). */
   packages: string[]
   config: BuildConfig
+  /** Vetted community add-on ids (data/packages/community.json). Never arbitrary URLs (PRD §3.3). */
+  communityPackages: string[]
+  /** UI language; 'en' (default) installs no i18n packages. One of SUPPORTED_LANGUAGES. */
+  uiLanguage: string
 }
 
 export type ExecutorState = 'queued' | 'building' | 'success' | 'failed' | 'timeout'

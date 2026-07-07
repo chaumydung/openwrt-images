@@ -1,5 +1,9 @@
 // Pure logic for the homepage firmware builder: client-side config validation mirroring
 // the /api/builds rules, package token operations, step completion, and request assembly.
+import type { CommunityComponent, CuratedCategory } from '@/lib/community-packages'
+
+export type { CuratedCategory }
+export type CommunityComponentSummary = Pick<CommunityComponent, 'id' | 'label' | 'category' | 'note'>
 
 export type DistroId = 'openwrt' | 'immortalwrt'
 
@@ -110,6 +114,11 @@ export function removePackageToken(list: string[], token: string): string[] {
   return list.filter((t) => t !== token)
 }
 
+/** Adds an id if absent, removes it if present (checkbox-style toggle for community add-ons). */
+export function toggleId(list: string[], id: string): string[] {
+  return list.includes(id) ? list.filter((x) => x !== id) : [...list, id]
+}
+
 export function applyPreset(list: string[], packages: string[]): string[] {
   return packages.reduce(addPackageToken, list)
 }
@@ -169,6 +178,8 @@ export type BuildRequestBody = {
   profileId: string
   packages?: string[]
   config?: Partial<BuilderConfig>
+  communityPackages?: string[]
+  uiLanguage?: string
 }
 
 /** Assembles the POST /api/builds body; null when the selection has no matching build. */
@@ -177,6 +188,8 @@ export function buildRequestBody(sel: {
   device: BuilderDevice | null
   packages: string[]
   config: BuilderConfig
+  communityPackages?: string[]
+  uiLanguage?: string
 }): BuildRequestBody | null {
   const build = selectedBuild(sel.device, sel.distro)
   if (!build) return null
@@ -193,6 +206,8 @@ export function buildRequestBody(sel: {
     if (value !== '') config[field] = value
   }
   if (Object.keys(config).length > 0) body.config = config
+  if (sel.communityPackages && sel.communityPackages.length > 0) body.communityPackages = sel.communityPackages
+  if (sel.uiLanguage && sel.uiLanguage !== 'en') body.uiLanguage = sel.uiLanguage
   return body
 }
 

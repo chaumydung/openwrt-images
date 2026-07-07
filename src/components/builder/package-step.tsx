@@ -4,6 +4,7 @@
 // the removable selected-token list with manual add / "-pkg" exclusion support.
 import { useEffect, useMemo, useState } from 'react'
 import type { PackagePreset } from '@/lib/package-presets'
+import CommunityStep from './community-step'
 import {
   addPackageToken,
   applyPreset,
@@ -14,7 +15,7 @@ import {
   removePackageToken,
   removePreset,
 } from './lib'
-import type { DistroId, PackageCategoryInfo, PackageInfo } from './lib'
+import type { CommunityComponentSummary, CuratedCategory, DistroId, PackageCategoryInfo, PackageInfo } from './lib'
 
 type Props = {
   distro: DistroId
@@ -23,6 +24,13 @@ type Props = {
   packages: string[]
   onChange: (packages: string[]) => void
   presets: PackagePreset[]
+  curated: CuratedCategory[]
+  community: CommunityComponentSummary[]
+  communityPackages: string[]
+  onToggleCommunity: (id: string) => void
+  languages: string[]
+  uiLanguage: string
+  onLanguage: (lang: string) => void
 }
 
 type Catalog = { arch: string; categories: PackageCategoryInfo[]; total: number }
@@ -33,7 +41,21 @@ const PAGE = 100
 // time, so the effect never needs a synchronous setState reset.
 type FetchResult = { key: string; catalog?: Catalog; error?: string }
 
-export default function PackageStep({ distro, version, target, packages, onChange, presets }: Props) {
+export default function PackageStep({
+  distro,
+  version,
+  target,
+  packages,
+  onChange,
+  presets,
+  curated,
+  community,
+  communityPackages,
+  onToggleCommunity,
+  languages,
+  uiLanguage,
+  onLanguage,
+}: Props) {
   const [result, setResult] = useState<FetchResult | null>(null)
   const [attempt, setAttempt] = useState(0)
   const [query, setQuery] = useState('')
@@ -113,8 +135,39 @@ export default function PackageStep({ distro, version, target, packages, onChang
 
   return (
     <div>
+      {/* Curated official packages */}
+      <p className="text-sm font-medium text-slate-900">Curated official packages</p>
+      <div className="mt-2 space-y-3">
+        {curated.map((category) => (
+          <div key={category.id}>
+            <p className="font-mono text-xs uppercase tracking-wider text-slate-500">{category.label}</p>
+            <div className="mt-1.5 flex flex-wrap gap-2">
+              {category.packages.map((pkg) => {
+                const checked = selected.has(pkg.name)
+                return (
+                  <button
+                    key={pkg.name}
+                    type="button"
+                    aria-pressed={checked}
+                    title={pkg.description}
+                    onClick={() => toggle(pkg.name, !checked)}
+                    className={`rounded-full border px-3 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                      checked
+                        ? 'border-sky-600 bg-sky-600/10 text-sky-700'
+                        : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+                    }`}
+                  >
+                    {pkg.label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* Preset groups */}
-      <p className="text-sm font-medium text-slate-900">Preset package groups</p>
+      <p className="mt-5 text-sm font-medium text-slate-900">Preset package groups</p>
       <div className="mt-2 flex flex-wrap gap-2">
         {presets.map((preset) => {
           const applied = isPresetApplied(packages, preset.packages)
@@ -302,6 +355,15 @@ export default function PackageStep({ distro, version, target, packages, onChang
           </p>
         )}
       </div>
+
+      <CommunityStep
+        components={community}
+        selected={communityPackages}
+        onToggle={onToggleCommunity}
+        languages={languages}
+        uiLanguage={uiLanguage}
+        onLanguage={onLanguage}
+      />
     </div>
   )
 }

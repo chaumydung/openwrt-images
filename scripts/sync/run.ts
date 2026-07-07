@@ -1,10 +1,13 @@
 // Sync CLI: builds the device catalog from official downloads sites and writes data/catalog/.
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs'
+import path from 'node:path'
 import { discoverStableVersion as realDiscoverVersion } from './discover-version'
 import { discoverTargets as realDiscoverTargets } from './discover-targets'
 import { fetchProfiles as realFetchProfiles, mergeDevices, normalizeProfiles, type RawProfilesJson } from './profiles'
 import { fetchToh, buildSpecs } from './toh'
 import { mapLimit } from './map-limit'
+import { syncCommunity } from './community'
+import { getCommunityComponents } from '../../src/lib/community-packages'
 import type { DistroConfig } from './types'
 import type { CatalogDevice, CatalogMeta, DeviceSpecs, TargetMeta } from '../../src/lib/catalog-types'
 
@@ -70,6 +73,15 @@ async function main() {
     console.warn(`[sync] ToH fetch failed, keeping previous specs.json: ${err}`)
   }
   writeFileSync('data/catalog/specs.json', JSON.stringify(specs))
+
+  // Community add-on latest snapshots: fetch the latest release for github-release components.
+  const community = await syncCommunity(getCommunityComponents(), fetch)
+  mkdirSync('data/packages', { recursive: true })
+  writeFileSync(
+    path.join(process.cwd(), 'data/packages/community.json'),
+    JSON.stringify({ languages: ['en', 'zh-cn', 'zh-tw', 'ru'], components: community }, null, 2) + '\n',
+  )
+  console.warn(`[sync] community: refreshed ${community.filter((c) => c.latest.version).length}/${community.length} latest snapshots`)
 }
 
 if (process.argv[1]?.endsWith('run.ts')) main()

@@ -1,0 +1,27 @@
+{
+  "categories": [
+    {
+      "id": "luci-apps",
+      "label": "LuCI Apps",
+      "packages": [
+        { "name": "luci-app-ttyd", "label": "Terminal (ttyd)", "description": "Web SSH terminal in LuCI." },
+        { "name": "luci-app-adguardhome", "label": "AdGuard Home", "description": "Network-wide ad and tracker blocking." },
+        { "name": "luci-app-samba4", "label": "Samba (network shares)", "description": "SMB file sharing from attached storage." },
+        { "name": "luci-app-upnp", "label": "UPnP / NAT-PMP", "description": "Automatic port mapping for LAN apps." },
+        { "name": "luci-app-ddns", "label": "Dynamic DNS", "description": "Keep a hostname pointed at a changing WAN IP." },
+        { "name": "luci-app-sqm", "label": "SQM QoS", "description": "Smart queue management to reduce bufferbloat." },
+        { "name": "luci-app-wireguard", "label": "WireGuard status", "description": "Status page for WireGuard tunnels." }
+      ]
+    },
+    {
+      "id": "utilities",
+      "label": "Utilities",
+      "packages": [
+        { "name": "htop", "label": "htop", "description": "Interactive process viewer." },
+        { "name": "curl", "label": "curl", "description": "Command-line HTTP client." },
+        { "name": "nano", "label": "nano", "description": "Simple terminal text editor." },
+        { "name": "kmod-usb-storage", "label": "USB storage", "description": "Kernel module for USB drives." }
+      ]
+    }
+  ]
+}

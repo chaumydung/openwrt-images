@@ -11,6 +11,8 @@ const spec: BuildSpec = {
   profile: 'xiaomi_mi-router-4a-gigabit',
   packages: ['luci', '-ppp'],
   config: { hostname: 'OpenWrt', lanIp: '192.168.1.1' },
+  communityPackages: [],
+  uiLanguage: 'en',
 }
 
 describe('memory adapter: users', () => {

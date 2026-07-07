@@ -15,6 +15,8 @@ const spec = (packages: string[] = ['luci']): BuildSpec => ({
   profileId: 'xiaomi_mi-router-4a-gigabit',
   packages,
   config: { hostname: 'openwrt-test' },
+  communityPackages: [],
+  uiLanguage: 'en',
 })
 
 // Advance a mock job through queued(2) + building(3) and return the terminal status.
@@ -145,6 +147,21 @@ describe('GithubActionsExecutor', () => {
     expect(body.inputs.profile).toBe('xiaomi_mi-router-4a-gigabit')
     expect(body.inputs.packages).toBe('luci -ppp')
     expect(JSON.parse(body.inputs.config_json)).toEqual({ hostname: 'openwrt-test' })
+    expect(body.inputs.community_packages).toBe('[]')
+    expect(body.inputs.ui_language).toBe('en')
+  })
+
+  it('submit forwards community_packages and ui_language when set', async () => {
+    fetchMock.mockResolvedValueOnce(new Response(null, { status: 204 }))
+    await new GithubActionsExecutor().submit({
+      ...spec(['luci']),
+      communityPackages: ['openclash'],
+      uiLanguage: 'zh-cn',
+    })
+    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit]
+    const body = JSON.parse(init.body as string)
+    expect(body.inputs.community_packages).toBe('["openclash"]')
+    expect(body.inputs.ui_language).toBe('zh-cn')
   })
 
   it('submit throws on a non-2xx dispatch response', async () => {
@@ -232,6 +249,36 @@ describe('parseWorkflowRunWebhook', () => {
   it('ignores runs that are not firmware builds', () => {
     const other = JSON.stringify({ workflow_run: { name: 'CI', display_title: 'CI run', conclusion: 'success' } })
     expect(parseWorkflowRunWebhook(other, sign(other), secret)).toBeNull()
+  })
+})
+
+describe('MockExecutor community packages', () => {
+  it('mock log echoes selected community packages', async () => {
+    const exec = new MockExecutor()
+    const testSpec = spec(['luci'])
+    const { externalId } = await exec.submit({ ...testSpec, communityPackages: ['openclash'], uiLanguage: 'en' })
+    let log = ''
+    for (let i = 0; i < 6; i++) log = (await exec.getStatus(externalId)).logText ?? log
+    expect(log).toContain('community add-ons: openclash')
+  })
+
+  it('mock log echoes multiple community packages', async () => {
+    const exec = new MockExecutor()
+    const testSpec = spec(['luci'])
+    const { externalId } = await exec.submit({ ...testSpec, communityPackages: ['openclash', 'smartdns'], uiLanguage: 'en' })
+    let log = ''
+    for (let i = 0; i < 6; i++) log = (await exec.getStatus(externalId)).logText ?? log
+    expect(log).toContain('community add-ons: openclash, smartdns')
+  })
+
+  it('mock log includes ui language when non-en', async () => {
+    const exec = new MockExecutor()
+    const testSpec = spec(['luci'])
+    const { externalId } = await exec.submit({ ...testSpec, communityPackages: ['openclash'], uiLanguage: 'zh-cn' })
+    let log = ''
+    for (let i = 0; i < 6; i++) log = (await exec.getStatus(externalId)).logText ?? log
+    expect(log).toContain('community add-ons: openclash')
+    expect(log).toContain('(ui language: zh-cn)')
   })
 })
 
