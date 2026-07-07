@@ -111,7 +111,6 @@ describe('GithubActionsExecutor', () => {
     vi.stubGlobal('fetch', fetchMock)
     vi.stubEnv('BUILD_REPO', 'acme/owrt-builder')
     vi.stubEnv('BUILD_GITHUB_TOKEN', 'ghp_test')
-    vi.stubEnv('R2_PUBLIC_BASE_URL', 'https://dl.example.com')
   })
   afterEach(() => {
     vi.unstubAllGlobals()
@@ -191,7 +190,7 @@ describe('GithubActionsExecutor', () => {
     expect((await exec.getStatus('the-build-id')).state).toBe('timeout')
   })
 
-  it('on success reads meta.json from the conventional R2 path and composes the artifact', async () => {
+  it('on success reads meta.json from the build release and composes the artifact', async () => {
     fetchMock
       .mockResolvedValueOnce(jsonResponse({ workflow_runs: [run({})] }))
       .mockResolvedValueOnce(
@@ -205,9 +204,11 @@ describe('GithubActionsExecutor', () => {
       )
     const status = await new GithubActionsExecutor().getStatus('the-build-id')
     expect(status.state).toBe('success')
-    expect(fetchMock.mock.calls[1][0]).toBe('https://dl.example.com/builds/the-build-id/meta.json')
+    expect(fetchMock.mock.calls[1][0]).toBe(
+      'https://github.com/acme/owrt-builder/releases/download/build-the-build-id/meta.json',
+    )
     expect(status.artifact).toEqual({
-      url: 'https://dl.example.com/builds/the-build-id/firmware-squashfs-sysupgrade.bin',
+      url: 'https://github.com/acme/owrt-builder/releases/download/build-the-build-id/firmware-squashfs-sysupgrade.bin',
       sha256: 'ab'.repeat(32),
       sizeBytes: 8388608,
       expiresAt: '2026-07-13T00:00:00Z',

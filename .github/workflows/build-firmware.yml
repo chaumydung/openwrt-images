@@ -4,16 +4,17 @@
 # Contract with the executor:
 #   - run-name embeds the client-generated build_id — workflow_dispatch returns no run id,
 #     so the run name is the correlation key for status polling and webhook callbacks.
-#   - On success, firmware images + meta.json are uploaded to R2 under builds/<build_id>/;
-#     the executor reads {R2_PUBLIC_BASE_URL}/builds/<build_id>/meta.json
+#   - On success, firmware images + meta.json are published as assets on a GitHub Release
+#     tagged `build-<build_id>`; the executor reads
+#     https://github.com/<repo>/releases/download/build-<build_id>/meta.json
 #     (shape: {buildId, file, sha256, sizeBytes, expiresAt}).
-#   - On failure, nothing is uploaded; GitHub Actions keeps the full build log.
+#   - On failure, no release is created; GitHub Actions keeps the full build log.
 #     Inputs and logs being public on this repo is an accepted product decision (PRD §6);
 #     the config whitelist below is the safety boundary (PRD §3.3).
 #
-# Required repo secrets: R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET.
-# Artifact expiry is enforced by an R2 lifecycle rule on the builds/ prefix (7 days);
-# meta.json's expiresAt mirrors it for display.
+# Uses the built-in GITHUB_TOKEN (needs `permissions: contents: write`) — no external storage
+# account or secrets. 7-day artifact expiry is enforced by .github/workflows/prune-builds.yml,
+# which deletes old build-* releases; meta.json's expiresAt mirrors it for display.
 name: Build firmware
 run-name: Build ${{ inputs.build_id }}
 
@@ -56,6 +57,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30 # hard cap (PRD §6); overrunning runs conclude as timed_out
+    permissions:
+      contents: write # publish build artifacts as a GitHub Release (built-in GITHUB_TOKEN)
     # Inputs are always passed to scripts through env, never interpolated into run bodies
     # (script-injection hygiene for a public repo).
     env:
@@ -226,18 +229,11 @@ jobs:
         # Assembles precompiled packages into flashable images (typically 1-5 minutes).
         run: make image PROFILE="$PROFILE" PACKAGES="$PACKAGES${COMMUNITY_PKGS:+ $COMMUNITY_PKGS}" FILES="$PWD/files"
 
-      - name: Install rclone
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq rclone
-
-      - name: Upload images and metadata to R2
+      - name: Publish images and metadata as a GitHub Release
         working-directory: ${{ steps.ib.outputs.dir }}
         env:
-          RCLONE_CONFIG_R2_TYPE: s3
-          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
-          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          RCLONE_CONFIG_R2_ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
-          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          GH_TOKEN: ${{ github.token }}
+          BUILD_REPO: ${{ github.repository }}
         run: |
           mkdir -p upload
           # Flashable images only — skip package indexes, manifests, and build metadata.
@@ -259,4 +255,8 @@ jobs:
                 --argjson size "$SIZE" --arg exp "$EXPIRES" \
                 '{buildId: $id, file: $file, sha256: $sha, sizeBytes: $size, expiresAt: $exp}' \
                 > upload/meta.json
-          rclone copy upload "r2:$R2_BUCKET/builds/$BUILD_ID/"
+          # Publish all images + meta.json as assets on a per-build release; the executor reads
+          # https://github.com/<repo>/releases/download/build-<id>/{meta.json,<image>}.
+          gh release create "build-$BUILD_ID" upload/* \
+            --repo "$BUILD_REPO" --title "Build $BUILD_ID" \
+            --notes "Automated firmware build. Assets expire ~$EXPIRES (pruned by prune-builds.yml)."
