@@ -20,6 +20,10 @@ const combo = {
   profileId: device.builds[0].profileId,
 }
 
+function validCombo(): Record<string, unknown> {
+  return { ...combo }
+}
+
 function body(overrides: Record<string, unknown> = {}): Record<string, unknown> {
   return { ...combo, packages: ['luci', '-ppp'], config: { hostname: 'my-router' }, ...overrides }
 }
@@ -55,13 +59,13 @@ describe('validateBuildRequest', () => {
     const result = validateBuildRequest(body())
     expect(result).toEqual({
       ok: true,
-      spec: { ...combo, packages: ['luci', '-ppp'], config: { hostname: 'my-router' } },
+      spec: { ...combo, packages: ['luci', '-ppp'], config: { hostname: 'my-router' }, communityPackages: [], uiLanguage: 'en' },
     })
   })
 
   it('defaults packages and config when omitted', () => {
     const result = validateBuildRequest({ ...combo })
-    expect(result).toEqual({ ok: true, spec: { ...combo, packages: [], config: {} } })
+    expect(result).toEqual({ ok: true, spec: { ...combo, packages: [], config: {}, communityPackages: [], uiLanguage: 'en' } })
   })
 
   it('rejects a non-object body', () => {
@@ -151,7 +155,42 @@ describe('validateBuildRequest', () => {
     }
     expect(validateBuildRequest(body({ config }))).toEqual({
       ok: true,
-      spec: { ...combo, packages: ['luci', '-ppp'], config },
+      spec: { ...combo, packages: ['luci', '-ppp'], config, communityPackages: [], uiLanguage: 'en' },
+    })
+  })
+
+  describe('community packages & language validation', () => {
+    const base = validCombo()
+
+    it('accepts known community ids and defaults language to en', () => {
+      const r = validateBuildRequest({ ...base, communityPackages: ['openclash'] })
+      expect(r.ok).toBe(true)
+      if (r.ok) {
+        expect(r.spec.communityPackages).toEqual(['openclash'])
+        expect(r.spec.uiLanguage).toBe('en')
+      }
+    })
+
+    it('rejects an unknown community id', () => {
+      const r = validateBuildRequest({ ...base, communityPackages: ['definitely-not-real'] })
+      expect(r.ok).toBe(false)
+      if (!r.ok) expect(r.error).toContain('definitely-not-real')
+    })
+
+    it('rejects a non-array communityPackages', () => {
+      expect(validateBuildRequest({ ...base, communityPackages: 'openclash' }).ok).toBe(false)
+    })
+
+    it('accepts a whitelisted language and rejects others', () => {
+      expect(validateBuildRequest({ ...base, uiLanguage: 'zh-cn' }).ok).toBe(true)
+      const bad = validateBuildRequest({ ...base, uiLanguage: 'xx-yy' })
+      expect(bad.ok).toBe(false)
+      if (!bad.ok) expect(bad.error).toContain('language')
+    })
+
+    it('defaults communityPackages to [] when omitted', () => {
+      const r = validateBuildRequest(base)
+      if (r.ok) expect(r.spec.communityPackages).toEqual([])
     })
   })
 })

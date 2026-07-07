@@ -2,6 +2,7 @@
 // catalog and the config-field whitelist, submits builds under the daily quota and global
 // concurrency cap, and syncs executor status back to the DB with refund-once semantics.
 import { getCatalog } from '@/lib/catalog'
+import { communityIds, SUPPORTED_LANGUAGES } from '@/lib/community-packages'
 import { getDb } from '@/lib/db'
 import type { Build, BuildStatus, BuildUpdate } from '@/lib/db'
 import { getExecutor } from '@/lib/executor'
@@ -62,7 +63,11 @@ export type ValidationResult = { ok: true; spec: BuildSpec } | { ok: false; erro
 /** Validates an untrusted request body into a BuildSpec, or explains the first problem found. */
 export function validateBuildRequest(body: unknown): ValidationResult {
   if (typeof body !== 'object' || body === null) return { ok: false, error: 'Request body must be a JSON object' }
-  const { distro, version, target, profileId, packages = [], config = {} } = body as Record<string, unknown>
+  const {
+    distro, version, target, profileId,
+    packages = [], config = {},
+    communityPackages = [], uiLanguage = 'en',
+  } = body as Record<string, unknown>
 
   if (distro !== 'openwrt' && distro !== 'immortalwrt') {
     return { ok: false, error: 'distro must be "openwrt" or "immortalwrt"' }
@@ -108,7 +113,27 @@ export function validateBuildRequest(body: unknown): ValidationResult {
     cleanConfig[key as keyof BuildConfig] = value
   }
 
-  return { ok: true, spec: { distro, version, target, profileId, packages: packages as string[], config: cleanConfig } }
+  if (!Array.isArray(communityPackages)) {
+    return { ok: false, error: 'communityPackages must be an array of add-on ids' }
+  }
+  const ids = communityIds()
+  for (const id of communityPackages) {
+    if (typeof id !== 'string' || !ids.has(id)) {
+      return { ok: false, error: `Unknown community add-on: ${JSON.stringify(id)}. Only catalog ids are accepted.` }
+    }
+  }
+  if (typeof uiLanguage !== 'string' || !SUPPORTED_LANGUAGES.includes(uiLanguage as never)) {
+    return { ok: false, error: `Unsupported UI language: ${JSON.stringify(uiLanguage)}` }
+  }
+
+  return {
+    ok: true,
+    spec: {
+      distro, version, target, profileId,
+      packages: packages as string[], config: cleanConfig,
+      communityPackages: communityPackages as string[], uiLanguage,
+    },
+  }
 }
 
 // ── Submission ───────────────────────────────────────────────────────

@@ -15,6 +15,8 @@ const spec = (packages: string[] = ['luci']): BuildSpec => ({
   profileId: 'xiaomi_mi-router-4a-gigabit',
   packages,
   config: { hostname: 'openwrt-test' },
+  communityPackages: [],
+  uiLanguage: 'en',
 })
 
 // Advance a mock job through queued(2) + building(3) and return the terminal status.

@@ -19,6 +19,8 @@ export type BuildSpec = {
   profile: string
   packages: string[]
   config: BuildConfig
+  communityPackages: string[]
+  uiLanguage: string
 }
 
 export type User = {
