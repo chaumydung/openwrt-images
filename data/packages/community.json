@@ -1,5 +1,10 @@
 {
-  "languages": ["en", "zh-cn", "zh-tw", "ru"],
+  "languages": [
+    "en",
+    "zh-cn",
+    "zh-tw",
+    "ru"
+  ],
   "components": [
     {
       "id": "passwall",
@@ -8,10 +13,44 @@
       "note": null,
       "sourceType": "github-release",
       "githubRepo": "Openwrt-Passwall/openwrt-passwall",
-      "packages": ["luci-app-passwall"],
-      "extraDepends": ["dnsmasq-full"],
-      "i18nAvailable": ["zh-cn"],
-      "latest": { "version": null, "assets": {} }
+      "packages": [
+        "luci-app-passwall"
+      ],
+      "extraDepends": [
+        "dnsmasq-full"
+      ],
+      "i18nAvailable": [
+        "zh-cn"
+      ],
+      "latest": {
+        "version": "26.7.1-1",
+        "assets": [
+          {
+            "name": "22.03-_luci-app-passwall_26.7.1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.7.1-1/22.03-_luci-app-passwall_26.7.1_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.7.1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.7.1-1/22.03-_luci-i18n-passwall-zh-cn_26.7.1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.7.1-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.7.1-1/23.05-24.10_luci-app-passwall_26.7.1-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.7.1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.7.1-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.7.1_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.7.1-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.7.1-1/25.12%2B_luci-app-passwall-26.7.1-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.7.1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.7.1-1/25.12%2B_luci-i18n-passwall-zh-cn-26.7.1.apk"
+          }
+        ]
+      }
     },
     {
       "id": "passwall2",
@@ -20,10 +59,190 @@
       "note": null,
       "sourceType": "github-release",
       "githubRepo": "Openwrt-Passwall/openwrt-passwall2",
-      "packages": ["luci-app-passwall2"],
-      "extraDepends": ["dnsmasq-full"],
-      "i18nAvailable": ["zh-cn", "zh-tw", "ru"],
-      "latest": { "version": null, "assets": {} }
+      "packages": [
+        "luci-app-passwall2"
+      ],
+      "extraDepends": [
+        "dnsmasq-full"
+      ],
+      "i18nAvailable": [
+        "zh-cn",
+        "zh-tw",
+        "ru"
+      ],
+      "latest": {
+        "version": "26.6.16-1",
+        "assets": [
+          {
+            "name": "luci-app-passwall2-26.6.16-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-app-passwall2-26.6.16-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.6.16-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-app-passwall2_26.6.16-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru-26.6.16.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-i18n-passwall2-ru-26.6.16.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru_26.6.16_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-i18n-passwall2-ru_26.6.16_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.6.16.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-i18n-passwall2-zh-cn-26.6.16.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.6.16_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-i18n-passwall2-zh-cn_26.6.16_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.6.16.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-i18n-passwall2-zh-tw-26.6.16.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.6.16_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/luci-i18n-passwall2-zh-tw_26.6.16_all.ipk"
+          },
+          {
+            "name": "passwall_packages_apk_aarch64_cortex-a53.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_aarch64_cortex-a53.zip"
+          },
+          {
+            "name": "passwall_packages_apk_aarch64_cortex-a72.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_aarch64_cortex-a72.zip"
+          },
+          {
+            "name": "passwall_packages_apk_aarch64_generic.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_aarch64_generic.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a15_neon-vfpv4.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a15_neon-vfpv4.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a5_vfpv4.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a5_vfpv4.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a7.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a7.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a7_neon-vfpv4.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a7_neon-vfpv4.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a8_vfpv3.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a8_vfpv3.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a9.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a9.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a9_neon.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a9_neon.zip"
+          },
+          {
+            "name": "passwall_packages_apk_arm_cortex-a9_vfpv3-d16.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_arm_cortex-a9_vfpv3-d16.zip"
+          },
+          {
+            "name": "passwall_packages_apk_mipsel_74kc.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_mipsel_74kc.zip"
+          },
+          {
+            "name": "passwall_packages_apk_mipsel_mips32.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_mipsel_mips32.zip"
+          },
+          {
+            "name": "passwall_packages_apk_mips_24kc.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_mips_24kc.zip"
+          },
+          {
+            "name": "passwall_packages_apk_mips_4kec.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_mips_4kec.zip"
+          },
+          {
+            "name": "passwall_packages_apk_mips_mips32.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_mips_mips32.zip"
+          },
+          {
+            "name": "passwall_packages_apk_x86_64.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_apk_x86_64.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_aarch64_cortex-a53.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_aarch64_cortex-a53.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_aarch64_cortex-a72.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_aarch64_cortex-a72.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_aarch64_generic.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_aarch64_generic.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a15_neon-vfpv4.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a15_neon-vfpv4.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a5_vfpv4.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a5_vfpv4.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a7.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a7.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a7_neon-vfpv4.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a7_neon-vfpv4.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a8_vfpv3.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a8_vfpv3.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a9.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a9.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a9_neon.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a9_neon.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_arm_cortex-a9_vfpv3-d16.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_arm_cortex-a9_vfpv3-d16.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_mipsel_24kc.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_mipsel_24kc.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_mipsel_74kc.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_mipsel_74kc.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_mipsel_mips32.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_mipsel_mips32.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_mips_24kc.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_mips_24kc.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_mips_mips32.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_mips_mips32.zip"
+          },
+          {
+            "name": "passwall_packages_ipk_x86_64.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_x86_64.zip"
+          }
+        ]
+      }
     },
     {
       "id": "openclash",
@@ -32,10 +251,29 @@
       "note": "The Mihomo core downloads on first run — the router needs internet access the first time you open OpenClash.",
       "sourceType": "github-release",
       "githubRepo": "vernesong/OpenClash",
-      "packages": ["luci-app-openclash"],
-      "extraDepends": ["dnsmasq-full", "coreutils-nohup"],
-      "i18nAvailable": ["zh-cn"],
-      "latest": { "version": null, "assets": {} }
+      "packages": [
+        "luci-app-openclash"
+      ],
+      "extraDepends": [
+        "dnsmasq-full",
+        "coreutils-nohup"
+      ],
+      "i18nAvailable": [
+        "zh-cn"
+      ],
+      "latest": {
+        "version": "v0.47.116",
+        "assets": [
+          {
+            "name": "luci-app-openclash-0.47.116.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.116/luci-app-openclash-0.47.116.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.116_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.116/luci-app-openclash_0.47.116_all.ipk"
+          }
+        ]
+      }
     },
     {
       "id": "homeproxy",
@@ -43,23 +281,270 @@
       "category": "proxy",
       "note": "In the ImmortalWrt feed; OpenWrt builds pull it from the ImmortalWrt package feed.",
       "sourceType": "feed",
-      "feed": { "name": "immortalwrt_luci", "urlTemplate": "https://downloads.immortalwrt.org/releases/{version}/packages/{arch}/luci", "checkSignature": false },
-      "packages": ["luci-app-homeproxy"],
+      "feed": {
+        "name": "immortalwrt_luci",
+        "urlTemplate": "https://downloads.immortalwrt.org/releases/{version}/packages/{arch}/luci",
+        "checkSignature": false
+      },
+      "packages": [
+        "luci-app-homeproxy"
+      ],
       "extraDepends": [],
-      "i18nAvailable": ["zh-cn"],
-      "latest": { "version": null, "assets": {} }
+      "i18nAvailable": [
+        "zh-cn"
+      ],
+      "latest": {
+        "version": null,
+        "assets": []
+      }
     },
     {
       "id": "nikki",
       "label": "Nikki (Mihomo)",
       "category": "proxy",
       "note": null,
-      "sourceType": "github-release",
+      "sourceType": "tarball",
       "githubRepo": "nikkinikki-org/OpenWrt-nikki",
-      "packages": ["luci-app-nikki"],
-      "extraDepends": ["dnsmasq-full"],
-      "i18nAvailable": ["zh-cn", "zh-tw", "ru"],
-      "latest": { "version": null, "assets": {} }
+      "packages": [
+        "luci-app-nikki"
+      ],
+      "extraDepends": [
+        "dnsmasq-full"
+      ],
+      "i18nAvailable": [
+        "zh-cn",
+        "zh-tw",
+        "ru"
+      ],
+      "latest": {
+        "version": "v1.26.1",
+        "assets": [
+          {
+            "name": "nikki_aarch64_cortex-a53-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a53-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a53-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a53-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a53-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a53-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a72-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a72-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a72-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a72-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a72-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a72-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a76-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a76-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a76-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_cortex-a76-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_generic-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_generic-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_generic-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_generic-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_generic-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_aarch64_generic-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a15_neon-vfpv4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a15_neon-vfpv4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a15_neon-vfpv4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a15_neon-vfpv4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a5_vfpv4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a5_vfpv4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a5_vfpv4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a5_vfpv4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a5_vfpv4-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a5_vfpv4-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a7_neon-vfpv4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a7_neon-vfpv4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a7_neon-vfpv4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a7_neon-vfpv4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a7_neon-vfpv4-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a7_neon-vfpv4-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a8_vfpv3-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a8_vfpv3-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_neon-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9_neon-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_neon-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9_neon-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_neon-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9_neon-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_vfpv3-d16-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9_vfpv3-d16-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_vfpv3-d16-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9_vfpv3-d16-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_vfpv3-d16-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_arm_cortex-a9_vfpv3-d16-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_i386_pentium4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_i386_pentium4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_i386_pentium4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_i386_pentium4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_i386_pentium4-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_i386_pentium4-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_loongarch64_generic-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_loongarch64_generic-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_mips64_octeonplus-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips64_octeonplus-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mips64_octeonplus-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips64_octeonplus-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_mips64_octeonplus-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips64_octeonplus-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_24kc-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_24kc-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_24kc-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc_24kf-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_24kc_24kf-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc_24kf-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_24kc_24kf-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc_24kf-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_24kc_24kf-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_74kc-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_74kc-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_74kc-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_74kc-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_mips32-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_mips32-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_mips32-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mipsel_mips32-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_mips_24kc-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips_24kc-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mips_24kc-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips_24kc-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_mips_4kec-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips_4kec-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mips_mips32-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips_mips32-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mips_mips32-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_mips_mips32-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_riscv64_generic-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_riscv64_generic-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_riscv64_generic-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_riscv64_generic-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_x86_64-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_x86_64-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_x86_64-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_x86_64-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_x86_64-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_x86_64-SNAPSHOT.tar.gz"
+          }
+        ]
+      }
     },
     {
       "id": "ssr-plus",
@@ -68,10 +553,36 @@
       "note": "Prebuilt packages are sourced from a vetted community aggregator; pinned and reviewed by us.",
       "sourceType": "github-release",
       "githubRepo": "fw876/helloworld",
-      "packages": ["luci-app-ssr-plus"],
-      "extraDepends": ["dnsmasq-full"],
-      "i18nAvailable": ["zh-cn"],
-      "latest": { "version": null, "assets": {} }
+      "packages": [
+        "luci-app-ssr-plus"
+      ],
+      "extraDepends": [
+        "dnsmasq-full"
+      ],
+      "i18nAvailable": [
+        "zh-cn"
+      ],
+      "latest": {
+        "version": "v196.3",
+        "assets": [
+          {
+            "name": "helloworld-x64_apk-BUILD-INFO.txt",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.3/helloworld-x64_apk-BUILD-INFO.txt"
+          },
+          {
+            "name": "helloworld-x64_ipk-BUILD-INFO.txt",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.3/helloworld-x64_ipk-BUILD-INFO.txt"
+          },
+          {
+            "name": "luci-app-ssr-plus-196-r3.apk",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.3/luci-app-ssr-plus-196-r3.apk"
+          },
+          {
+            "name": "luci-app-ssr-plus_196-r3_all.ipk",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.3/luci-app-ssr-plus_196-r3_all.ipk"
+          }
+        ]
+      }
     },
     {
       "id": "smartdns",
@@ -79,23 +590,294 @@
       "category": "dns",
       "note": null,
       "sourceType": "feed",
-      "feed": { "name": "openwrt_packages", "urlTemplate": "https://downloads.openwrt.org/releases/{version}/packages/{arch}/packages", "checkSignature": false },
-      "packages": ["luci-app-smartdns"],
+      "feed": {
+        "name": "openwrt_packages",
+        "urlTemplate": "https://downloads.openwrt.org/releases/{version}/packages/{arch}/packages",
+        "checkSignature": false
+      },
+      "packages": [
+        "luci-app-smartdns"
+      ],
       "extraDepends": [],
-      "i18nAvailable": ["zh-cn"],
-      "latest": { "version": null, "assets": {} }
+      "i18nAvailable": [
+        "zh-cn"
+      ],
+      "latest": {
+        "version": null,
+        "assets": []
+      }
     },
     {
       "id": "mosdns",
       "label": "MosDNS",
       "category": "dns",
       "note": null,
-      "sourceType": "github-release",
+      "sourceType": "tarball",
       "githubRepo": "sbwml/luci-app-mosdns",
-      "packages": ["luci-app-mosdns"],
+      "packages": [
+        "luci-app-mosdns"
+      ],
       "extraDepends": [],
-      "i18nAvailable": ["zh-cn"],
-      "latest": { "version": null, "assets": {} }
+      "i18nAvailable": [
+        "zh-cn"
+      ],
+      "latest": {
+        "version": "v5.3.4-r5",
+        "assets": [
+          {
+            "name": "aarch64_cortex-a53-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_cortex-a53-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "aarch64_cortex-a53-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_cortex-a53-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "aarch64_cortex-a72-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_cortex-a72-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "aarch64_cortex-a72-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_cortex-a72-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "aarch64_cortex-a76-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_cortex-a76-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "aarch64_cortex-a76-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_cortex-a76-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "aarch64_generic-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_generic-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "aarch64_generic-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/aarch64_generic-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_arm1176jzf-s_vfp-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_arm1176jzf-s_vfp-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_arm1176jzf-s_vfp-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_arm1176jzf-s_vfp-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_arm926ej-s-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_arm926ej-s-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_arm926ej-s-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_arm926ej-s-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a15_neon-vfpv4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a15_neon-vfpv4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a15_neon-vfpv4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a15_neon-vfpv4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a5_vfpv4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a5_vfpv4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a5_vfpv4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a5_vfpv4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a7-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a7-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a7-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a7-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a7_neon-vfpv4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a7_neon-vfpv4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a7_neon-vfpv4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a7_neon-vfpv4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a7_vfpv4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a7_vfpv4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a7_vfpv4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a7_vfpv4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a8_vfpv3-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a8_vfpv3-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a8_vfpv3-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a8_vfpv3-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a9-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a9-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a9-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a9-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a9_neon-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a9_neon-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a9_neon-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a9_neon-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a9_vfpv3-d16-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a9_vfpv3-d16-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_cortex-a9_vfpv3-d16-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_cortex-a9_vfpv3-d16-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_fa526-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_fa526-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_fa526-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_fa526-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "arm_xscale-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_xscale-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "arm_xscale-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/arm_xscale-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "i386_pentium-mmx-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/i386_pentium-mmx-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "i386_pentium-mmx-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/i386_pentium-mmx-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "i386_pentium4-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/i386_pentium4-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "i386_pentium4-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/i386_pentium4-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "loongarch64_generic-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/loongarch64_generic-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "loongarch64_generic-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/loongarch64_generic-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mips64el_mips64r2-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips64el_mips64r2-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mips64el_mips64r2-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips64el_mips64r2-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mips64_mips64r2-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips64_mips64r2-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mips64_mips64r2-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips64_mips64r2-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mips64_octeonplus-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips64_octeonplus-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mips64_octeonplus-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips64_octeonplus-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mipsel_24kc-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_24kc-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mipsel_24kc-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_24kc-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mipsel_24kc_24kf-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_24kc_24kf-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mipsel_24kc_24kf-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_24kc_24kf-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mipsel_74kc-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_74kc-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mipsel_74kc-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_74kc-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mipsel_mips32-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_mips32-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mipsel_mips32-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mipsel_mips32-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mips_24kc-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips_24kc-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mips_24kc-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips_24kc-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "mips_4kec-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips_4kec-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mips_mips32-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips_mips32-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "mips_mips32-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/mips_mips32-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "riscv64_generic-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/riscv64_generic-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "riscv64_riscv64-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/riscv64_riscv64-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "x86_64-openwrt-24.10.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/x86_64-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "x86_64-openwrt-25.12.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/x86_64-openwrt-25.12.tar.gz"
+          }
+        ]
+      }
     },
     {
       "id": "argon-theme",
@@ -104,10 +886,22 @@
       "note": null,
       "sourceType": "github-release",
       "githubRepo": "jerrykuku/luci-theme-argon",
-      "packages": ["luci-theme-argon"],
-      "extraDepends": ["luci-compat"],
+      "packages": [
+        "luci-theme-argon"
+      ],
+      "extraDepends": [
+        "luci-compat"
+      ],
       "i18nAvailable": [],
-      "latest": { "version": null, "assets": {} }
+      "latest": {
+        "version": "v2.4.3",
+        "assets": [
+          {
+            "name": "luci-theme-argon-2.4.3-r20250722.apk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-theme-argon-2.4.3-r20250722.apk"
+          }
+        ]
+      }
     }
   ]
 }
