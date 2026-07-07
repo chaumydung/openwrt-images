@@ -2,7 +2,7 @@
 
 Build custom OpenWrt and ImmortalWrt firmware images in your browser — pick a device,
 choose packages, set a few network basics, and download a ready-to-flash image, without
-setting up the ImageBuilder toolchain locally.
+setting up the ImageBuilder toolchain locally. It runs live at **[moxudu.top](https://moxudu.top)**.
 
 > Not affiliated with the OpenWrt or ImmortalWrt projects. "OpenWrt" and "ImmortalWrt" are
 > trademarks of their respective owners; this project uses the names descriptively only.
