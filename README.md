@@ -110,7 +110,7 @@ On the **build repo**: enable Actions, and add a webhook (`workflow_run` event) 
 `https://<your-site>/api/webhooks/build` with `BUILD_WEBHOOK_SECRET`. Artifact publishing
 and pruning use the workflow's built-in `GITHUB_TOKEN` — no storage account or secrets.
 
-See `.env.example` for the full key set and `docs/PRD.md` for the product spec.
+See `.env.example` for the full key set.
 
 ## Project structure
 
@@ -122,7 +122,6 @@ scripts/sync/       catalog + community-add-on data sync (pnpm sync)
 scripts/build/      build-time community-add-on resolver
 .github/workflows/  build-firmware.yml (executor) + prune-builds.yml (24h retention)
 data/               generated catalogs + curated package data
-docs/               PRD, SEO/design specs, test & security docs
 tests/              Vitest unit/component + Playwright e2e
 ```
 
