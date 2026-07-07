@@ -45,7 +45,7 @@ const sections: LegalSection[] = [
   {
     heading: 'Retention',
     paragraphs: [
-      'Firmware images produced by custom builds are deleted 7 days after the build finishes. Records of your builds and daily quota counters are kept so quotas work. Feedback messages are kept until they have been handled.',
+      'Firmware images produced by custom builds are deleted 24 hours after the build finishes. Records of your builds and daily quota counters are kept so quotas work. Feedback messages are kept until they have been handled.',
     ],
   },
   {

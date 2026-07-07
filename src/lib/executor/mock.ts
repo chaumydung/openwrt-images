@@ -11,7 +11,7 @@ const TRIGGER_TIMEOUT = 'mock-timeout'
 
 const QUEUED_POLLS = 2
 const BUILDING_POLLS = 3
-const ARTIFACT_TTL_MS = 7 * 24 * 60 * 60 * 1000
+const ARTIFACT_TTL_MS = 24 * 60 * 60 * 1000 // 24h, matching the real prune-builds retention
 
 function buildLogLines(spec: BuildSpec): string[] {
   const lines = [

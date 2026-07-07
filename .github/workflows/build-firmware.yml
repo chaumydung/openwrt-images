@@ -13,7 +13,7 @@
 #     the config whitelist below is the safety boundary (PRD §3.3).
 #
 # Uses the built-in GITHUB_TOKEN (needs `permissions: contents: write`) — no external storage
-# account or secrets. 7-day artifact expiry is enforced by .github/workflows/prune-builds.yml,
+# account or secrets. 24-hour artifact expiry is enforced by .github/workflows/prune-builds.yml,
 # which deletes old build-* releases; meta.json's expiresAt mirrors it for display.
 name: Build firmware
 run-name: Build ${{ inputs.build_id }}
@@ -250,7 +250,7 @@ jobs:
           if [ -z "$PRIMARY" ]; then PRIMARY=$(ls upload | head -n1); fi
           SHA256=$(sha256sum "upload/$PRIMARY" | cut -d' ' -f1)
           SIZE=$(stat -c %s "upload/$PRIMARY")
-          EXPIRES=$(date -u -d '+7 days' +%Y-%m-%dT%H:%M:%SZ)
+          EXPIRES=$(date -u -d '+1 day' +%Y-%m-%dT%H:%M:%SZ)
           jq -n --arg id "$BUILD_ID" --arg file "$PRIMARY" --arg sha "$SHA256" \
                 --argjson size "$SIZE" --arg exp "$EXPIRES" \
                 '{buildId: $id, file: $file, sha256: $sha, sizeBytes: $size, expiresAt: $exp}' \

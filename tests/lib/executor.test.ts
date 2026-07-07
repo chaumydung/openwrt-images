@@ -43,7 +43,7 @@ describe('MockExecutor', () => {
     expect(states).toEqual(['queued', 'queued', 'building', 'building', 'building', 'success'])
   })
 
-  it('returns a fake artifact with deterministic sha256 and ~7 day expiry on success', async () => {
+  it('returns a fake artifact with deterministic sha256 and ~24 hour expiry on success', async () => {
     const exec = new MockExecutor()
     const { externalId } = await exec.submit(spec())
     const status = await terminalStatus(exec, externalId)
@@ -52,8 +52,8 @@ describe('MockExecutor', () => {
     expect(status.artifact?.sha256).toMatch(/^[0-9a-f]{64}$/)
     expect(status.artifact?.sizeBytes).toBeGreaterThan(0)
     const ttl = new Date(status.artifact!.expiresAt!).getTime() - Date.now()
-    expect(ttl).toBeGreaterThan(6.9 * 24 * 3600 * 1000)
-    expect(ttl).toBeLessThanOrEqual(7 * 24 * 3600 * 1000)
+    expect(ttl).toBeGreaterThan(23.9 * 3600 * 1000)
+    expect(ttl).toBeLessThanOrEqual(24 * 3600 * 1000)
   })
 
   it('mock-fail-conflict fails with a package-conflict hint and matching log', async () => {

@@ -45,7 +45,7 @@ const sections: LegalSection[] = [
   {
     heading: 'Build artifacts',
     paragraphs: [
-      'Firmware images from custom builds are kept for 7 days after the build finishes, then deleted. If a download link has expired, run the build again.',
+      'Firmware images from custom builds are kept for 24 hours after the build finishes, then deleted. If a download link has expired, run the build again.',
       'Custom build specifications and logs are publicly visible on GitHub Actions; the Privacy Policy explains exactly what that includes.',
     ],
   },
