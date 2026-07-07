@@ -206,6 +206,16 @@ jobs:
             curl -fsSL -o "$IB_DIR/packages/$(basename "$url")" "$url"
           done
 
+          # per-arch tarballs (nikki, mosdns, ...) ship no arch-independent package: download each,
+          # extract to a scratch dir, and move the ipks/apks inside into the same packages folder.
+          jq -r '.tarballUrls[]' /tmp/community.json | while read -r url; do
+            SCRATCH=$(mktemp -d)
+            curl -fsSL -o "$SCRATCH/tarball.tar.gz" "$url"
+            tar -xzf "$SCRATCH/tarball.tar.gz" -C "$SCRATCH"
+            find "$SCRATCH" -type f \( -name '*.ipk' -o -name '*.apk' \) -exec mv {} "$IB_DIR/packages/" \;
+            rm -rf "$SCRATCH"
+          done
+
           # export package + depend names for the Build image step
           {
             echo "COMMUNITY_PKGS=$(jq -r '(.packages + .extraDepends) | join(" ")' /tmp/community.json)"

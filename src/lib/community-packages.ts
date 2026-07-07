@@ -15,6 +15,7 @@ export type CuratedCategory = {
 export type CommunitySource =
   | { sourceType: 'feed'; feed: { name: string; urlTemplate: string; checkSignature: boolean } }
   | { sourceType: 'github-release'; githubRepo: string }
+  | { sourceType: 'tarball'; githubRepo: string }
 
 export type CommunityComponent = CommunitySource & {
   id: string
@@ -24,7 +25,9 @@ export type CommunityComponent = CommunitySource & {
   packages: string[]
   extraDepends: string[]
   i18nAvailable: string[]
-  latest: { version: string | null; assets: Record<string, string> }
+  // Sync records every release asset verbatim; picking the right one for a target
+  // arch/version/format is the resolver's job (scripts/build/resolve-community.ts).
+  latest: { version: string | null; assets: { name: string; url: string }[] }
 }
 
 function readJson<T>(file: string): T {
