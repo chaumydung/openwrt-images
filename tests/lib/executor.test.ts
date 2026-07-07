@@ -237,6 +237,36 @@ describe('parseWorkflowRunWebhook', () => {
   })
 })
 
+describe('MockExecutor community packages', () => {
+  it('mock log echoes selected community packages', async () => {
+    const exec = new MockExecutor()
+    const testSpec = spec(['luci'])
+    const { externalId } = await exec.submit({ ...testSpec, communityPackages: ['openclash'], uiLanguage: 'en' })
+    let log = ''
+    for (let i = 0; i < 6; i++) log = (await exec.getStatus(externalId)).logText ?? log
+    expect(log).toContain('community add-ons: openclash')
+  })
+
+  it('mock log echoes multiple community packages', async () => {
+    const exec = new MockExecutor()
+    const testSpec = spec(['luci'])
+    const { externalId } = await exec.submit({ ...testSpec, communityPackages: ['openclash', 'smartdns'], uiLanguage: 'en' })
+    let log = ''
+    for (let i = 0; i < 6; i++) log = (await exec.getStatus(externalId)).logText ?? log
+    expect(log).toContain('community add-ons: openclash, smartdns')
+  })
+
+  it('mock log includes ui language when non-en', async () => {
+    const exec = new MockExecutor()
+    const testSpec = spec(['luci'])
+    const { externalId } = await exec.submit({ ...testSpec, communityPackages: ['openclash'], uiLanguage: 'zh-cn' })
+    let log = ''
+    for (let i = 0; i < 6; i++) log = (await exec.getStatus(externalId)).logText ?? log
+    expect(log).toContain('community add-ons: openclash')
+    expect(log).toContain('(ui language: zh-cn)')
+  })
+})
+
 describe('getExecutor', () => {
   it('returns the mock executor unless APP_MODE is explicitly real', () => {
     vi.stubEnv('APP_MODE', 'mock')

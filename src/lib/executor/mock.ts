@@ -14,14 +14,21 @@ const BUILDING_POLLS = 3
 const ARTIFACT_TTL_MS = 7 * 24 * 60 * 60 * 1000
 
 function buildLogLines(spec: BuildSpec): string[] {
-  return [
+  const lines = [
     `Downloading ${spec.distro}-imagebuilder-${spec.version}-${spec.target.replace('/', '-')}.Linux-x86_64.tar.zst`,
     `make image PROFILE="${spec.profileId}" PACKAGES="${spec.packages.join(' ')}"`,
     'Checking configuration files...',
+  ]
+  if (spec.communityPackages.length > 0) {
+    lines.push(`Installing community add-ons: ${spec.communityPackages.join(', ')}` +
+      (spec.uiLanguage !== 'en' ? ` (ui language: ${spec.uiLanguage})` : ''))
+  }
+  lines.push(
     'Installing packages...',
     'Generating firmware images...',
     'Calculating sha256 checksums... done',
-  ]
+  )
+  return lines
 }
 
 function finalStatus(externalId: string, spec: BuildSpec): ExecutorStatus {
