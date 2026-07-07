@@ -48,6 +48,174 @@
           {
             "name": "25.12+_luci-i18n-passwall-zh-cn-26.7.1.apk",
             "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.7.1-1/25.12%2B_luci-i18n-passwall-zh-cn-26.7.1.apk"
+          },
+          {
+            "name": "22.03-_luci-app-passwall_26.6.2_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.6.2-1/22.03-_luci-app-passwall_26.6.2_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.6.2_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.6.2-1/22.03-_luci-i18n-passwall-zh-cn_26.6.2_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.6.2-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.6.2-1/23.05-24.10_luci-app-passwall_26.6.2-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.6.2_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.6.2-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.6.2_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.6.2-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.6.2-1/25.12%2B_luci-app-passwall-26.6.2-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.6.2.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.6.2-1/25.12%2B_luci-i18n-passwall-zh-cn-26.6.2.apk"
+          },
+          {
+            "name": "22.03-_luci-app-passwall_26.5.20_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.20-1/22.03-_luci-app-passwall_26.5.20_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.5.20_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.20-1/22.03-_luci-i18n-passwall-zh-cn_26.5.20_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.5.20-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.20-1/23.05-24.10_luci-app-passwall_26.5.20-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.5.20_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.20-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.5.20_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.5.20-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.20-1/25.12%2B_luci-app-passwall-26.5.20-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.5.20.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.20-1/25.12%2B_luci-i18n-passwall-zh-cn-26.5.20.apk"
+          },
+          {
+            "name": "22.03-_luci-app-passwall_26.5.11_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.11-1/22.03-_luci-app-passwall_26.5.11_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.5.11_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.11-1/22.03-_luci-i18n-passwall-zh-cn_26.5.11_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.5.11-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.11-1/23.05-24.10_luci-app-passwall_26.5.11-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.5.11_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.11-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.5.11_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.5.11-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.11-1/25.12%2B_luci-app-passwall-26.5.11-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.5.11.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.11-1/25.12%2B_luci-i18n-passwall-zh-cn-26.5.11.apk"
+          },
+          {
+            "name": "22.03-_luci-app-passwall_26.5.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.3-1/22.03-_luci-app-passwall_26.5.3_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.5.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.3-1/22.03-_luci-i18n-passwall-zh-cn_26.5.3_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.5.3-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.3-1/23.05-24.10_luci-app-passwall_26.5.3-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.5.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.3-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.5.3_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.5.3-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.3-1/25.12%2B_luci-app-passwall-26.5.3-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.5.3.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.5.3-1/25.12%2B_luci-i18n-passwall-zh-cn-26.5.3.apk"
+          },
+          {
+            "name": "22.03-_luci-app-passwall_26.4.15_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.15-1/22.03-_luci-app-passwall_26.4.15_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.4.15_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.15-1/22.03-_luci-i18n-passwall-zh-cn_26.4.15_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.4.15-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.15-1/23.05-24.10_luci-app-passwall_26.4.15-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.4.15_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.15-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.4.15_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.4.15-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.15-1/25.12%2B_luci-app-passwall-26.4.15-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.4.15.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.15-1/25.12%2B_luci-i18n-passwall-zh-cn-26.4.15.apk"
+          },
+          {
+            "name": "22.03-_luci-app-passwall_26.4.6_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.6-1/22.03-_luci-app-passwall_26.4.6_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.4.6_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.6-1/22.03-_luci-i18n-passwall-zh-cn_26.4.6_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.4.6-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.6-1/23.05-24.10_luci-app-passwall_26.4.6-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.4.6_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.6-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.4.6_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.4.6-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.6-1/25.12%2B_luci-app-passwall-26.4.6-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.4.6.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.6-1/25.12%2B_luci-i18n-passwall-zh-cn-26.4.6.apk"
+          },
+          {
+            "name": "22.03-_luci-app-passwall_26.4.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.3-1/22.03-_luci-app-passwall_26.4.3_all.ipk"
+          },
+          {
+            "name": "22.03-_luci-i18n-passwall-zh-cn_26.4.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.3-1/22.03-_luci-i18n-passwall-zh-cn_26.4.3_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-app-passwall_26.4.3-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.3-1/23.05-24.10_luci-app-passwall_26.4.3-r1_all.ipk"
+          },
+          {
+            "name": "23.05-24.10_luci-i18n-passwall-zh-cn_26.4.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.3-1/23.05-24.10_luci-i18n-passwall-zh-cn_26.4.3_all.ipk"
+          },
+          {
+            "name": "25.12+_luci-app-passwall-26.4.3-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.3-1/25.12%2B_luci-app-passwall-26.4.3-r1.apk"
+          },
+          {
+            "name": "25.12+_luci-i18n-passwall-zh-cn-26.4.3.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall/releases/download/26.4.3-1/25.12%2B_luci-i18n-passwall-zh-cn-26.4.3.apk"
           }
         ]
       }
@@ -240,6 +408,210 @@
           {
             "name": "passwall_packages_ipk_x86_64.zip",
             "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.16-1/passwall_packages_ipk_x86_64.zip"
+          },
+          {
+            "name": "luci-app-passwall2-26.6.3-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-app-passwall2-26.6.3-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.6.3-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-app-passwall2_26.6.3-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru-26.6.3.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-i18n-passwall2-ru-26.6.3.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru_26.6.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-i18n-passwall2-ru_26.6.3_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.6.3.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-i18n-passwall2-zh-cn-26.6.3.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.6.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-i18n-passwall2-zh-cn_26.6.3_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.6.3.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-i18n-passwall2-zh-tw-26.6.3.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.6.3_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/luci-i18n-passwall2-zh-tw_26.6.3_all.ipk"
+          },
+          {
+            "name": "passwall_packages_ipk_mips_4kec.zip",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.6.3-1/passwall_packages_ipk_mips_4kec.zip"
+          },
+          {
+            "name": "luci-app-passwall2-26.5.19-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-app-passwall2-26.5.19-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.5.19-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-app-passwall2_26.5.19-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru-26.5.19.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-i18n-passwall2-ru-26.5.19.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru_26.5.19_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-i18n-passwall2-ru_26.5.19_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.5.19.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-i18n-passwall2-zh-cn-26.5.19.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.5.19_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-i18n-passwall2-zh-cn_26.5.19_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.5.19.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-i18n-passwall2-zh-tw-26.5.19.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.5.19_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.19-1/luci-i18n-passwall2-zh-tw_26.5.19_all.ipk"
+          },
+          {
+            "name": "luci-app-passwall2-26.5.1-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-app-passwall2-26.5.1-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.5.1-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-app-passwall2_26.5.1-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru-26.5.1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-i18n-passwall2-ru-26.5.1.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru_26.5.1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-i18n-passwall2-ru_26.5.1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.5.1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-i18n-passwall2-zh-cn-26.5.1.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.5.1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-i18n-passwall2-zh-cn_26.5.1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.5.1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-i18n-passwall2-zh-tw-26.5.1.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.5.1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.5.1-1/luci-i18n-passwall2-zh-tw_26.5.1_all.ipk"
+          },
+          {
+            "name": "luci-app-passwall2-26.4.20-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-app-passwall2-26.4.20-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.4.20-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-app-passwall2_26.4.20-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru-26.4.20.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-i18n-passwall2-ru-26.4.20.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-ru_26.4.20_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-i18n-passwall2-ru_26.4.20_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.4.20.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-i18n-passwall2-zh-cn-26.4.20.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.4.20_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-i18n-passwall2-zh-cn_26.4.20_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.4.20.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-i18n-passwall2-zh-tw-26.4.20.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.4.20_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.20-1/luci-i18n-passwall2-zh-tw_26.4.20_all.ipk"
+          },
+          {
+            "name": "luci-app-passwall2-26.4.10-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.10-1/luci-app-passwall2-26.4.10-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.4.10-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.10-1/luci-app-passwall2_26.4.10-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.4.10.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.10-1/luci-i18n-passwall2-zh-cn-26.4.10.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.4.10_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.10-1/luci-i18n-passwall2-zh-cn_26.4.10_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.4.10.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.10-1/luci-i18n-passwall2-zh-tw-26.4.10.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.4.10_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.10-1/luci-i18n-passwall2-zh-tw_26.4.10_all.ipk"
+          },
+          {
+            "name": "luci-app-passwall2-26.4.5-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.5-1/luci-app-passwall2-26.4.5-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.4.5-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.5-1/luci-app-passwall2_26.4.5-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.4.5.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.5-1/luci-i18n-passwall2-zh-cn-26.4.5.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.4.5_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.5-1/luci-i18n-passwall2-zh-cn_26.4.5_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.4.5.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.5-1/luci-i18n-passwall2-zh-tw-26.4.5.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.4.5_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.4.5-1/luci-i18n-passwall2-zh-tw_26.4.5_all.ipk"
+          },
+          {
+            "name": "luci-app-passwall2-26.3.5-r1.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.3.5-1/luci-app-passwall2-26.3.5-r1.apk"
+          },
+          {
+            "name": "luci-app-passwall2_26.3.5-r1_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.3.5-1/luci-app-passwall2_26.3.5-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn-26.3.5.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.3.5-1/luci-i18n-passwall2-zh-cn-26.3.5.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-cn_26.3.5_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.3.5-1/luci-i18n-passwall2-zh-cn_26.3.5_all.ipk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw-26.3.5.apk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.3.5-1/luci-i18n-passwall2-zh-tw-26.3.5.apk"
+          },
+          {
+            "name": "luci-i18n-passwall2-zh-tw_26.3.5_all.ipk",
+            "url": "https://github.com/Openwrt-Passwall/openwrt-passwall2/releases/download/26.3.5-1/luci-i18n-passwall2-zh-tw_26.3.5_all.ipk"
           }
         ]
       }
@@ -271,6 +643,62 @@
           {
             "name": "luci-app-openclash_0.47.116_all.ipk",
             "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.116/luci-app-openclash_0.47.116_all.ipk"
+          },
+          {
+            "name": "luci-app-openclash-0.47.110.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.110/luci-app-openclash-0.47.110.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.110_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.110/luci-app-openclash_0.47.110_all.ipk"
+          },
+          {
+            "name": "luci-app-openclash-0.47.096.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.096/luci-app-openclash-0.47.096.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.096_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.096/luci-app-openclash_0.47.096_all.ipk"
+          },
+          {
+            "name": "luci-app-openclash-0.47.088.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.088/luci-app-openclash-0.47.088.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.088_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.088/luci-app-openclash_0.47.088_all.ipk"
+          },
+          {
+            "name": "luci-app-openclash-0.47.086.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.086/luci-app-openclash-0.47.086.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.086_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.086/luci-app-openclash_0.47.086_all.ipk"
+          },
+          {
+            "name": "luci-app-openclash-0.47.075.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.075/luci-app-openclash-0.47.075.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.075_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.075/luci-app-openclash_0.47.075_all.ipk"
+          },
+          {
+            "name": "luci-app-openclash-0.47.071.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.071/luci-app-openclash-0.47.071.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.071_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.071/luci-app-openclash_0.47.071_all.ipk"
+          },
+          {
+            "name": "luci-app-openclash-0.47.055.apk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.055/luci-app-openclash-0.47.055.apk"
+          },
+          {
+            "name": "luci-app-openclash_0.47.055_all.ipk",
+            "url": "https://github.com/vernesong/OpenClash/releases/download/v0.47.055/luci-app-openclash_0.47.055_all.ipk"
           }
         ]
       }
@@ -542,6 +970,126 @@
           {
             "name": "nikki_x86_64-SNAPSHOT.tar.gz",
             "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.1/nikki_x86_64-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a76-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_aarch64_cortex-a76-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a15_neon-vfpv4-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_arm_cortex-a15_neon-vfpv4-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a8_vfpv3-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_arm_cortex-a8_vfpv3-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a8_vfpv3-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_arm_cortex-a8_vfpv3-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_loongarch64_generic-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_loongarch64_generic-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_74kc-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_mipsel_74kc-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_mips32-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_mipsel_mips32-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_mips_24kc-openwrt-25.12.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_mips_24kc-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "nikki_mips_mips32-SNAPSHOT.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_mips_mips32-SNAPSHOT.tar.gz"
+          },
+          {
+            "name": "nikki_riscv64_riscv64-openwrt-24.10.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.26.0/nikki_riscv64_riscv64-openwrt-24.10.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a53-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_aarch64_cortex-a53-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_cortex-a72-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_aarch64_cortex-a72-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_aarch64_generic-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_aarch64_generic-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a15_neon-vfpv4-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_arm_cortex-a15_neon-vfpv4-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a5_vfpv4-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_arm_cortex-a5_vfpv4-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a7_neon-vfpv4-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_arm_cortex-a7_neon-vfpv4-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a8_vfpv3-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_arm_cortex-a8_vfpv3-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_arm_cortex-a9-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_neon-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_arm_cortex-a9_neon-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_arm_cortex-a9_vfpv3-d16-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_arm_cortex-a9_vfpv3-d16-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_i386_pentium4-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_i386_pentium4-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mips64_octeonplus-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mips64_octeonplus-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mipsel_24kc-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_24kc_24kf-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mipsel_24kc_24kf-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_74kc-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mipsel_74kc-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mipsel_mips32-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mipsel_mips32-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mips_24kc-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mips_24kc-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mips_4kec-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mips_4kec-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_mips_mips32-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_mips_mips32-openwrt-23.05.tar.gz"
+          },
+          {
+            "name": "nikki_x86_64-openwrt-23.05.tar.gz",
+            "url": "https://github.com/nikkinikki-org/OpenWrt-nikki/releases/download/v1.25.0/nikki_x86_64-openwrt-23.05.tar.gz"
           }
         ]
       }
@@ -580,6 +1128,22 @@
           {
             "name": "luci-app-ssr-plus_196-r3_all.ipk",
             "url": "https://github.com/fw876/helloworld/releases/download/v196.3/luci-app-ssr-plus_196-r3_all.ipk"
+          },
+          {
+            "name": "luci-app-ssr-plus-196-r2.apk",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.2/luci-app-ssr-plus-196-r2.apk"
+          },
+          {
+            "name": "luci-app-ssr-plus_196-r2_all.ipk",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.2/luci-app-ssr-plus_196-r2_all.ipk"
+          },
+          {
+            "name": "luci-app-ssr-plus-196-r1.apk",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.1/luci-app-ssr-plus-196-r1.apk"
+          },
+          {
+            "name": "luci-app-ssr-plus_196-r1_all.ipk",
+            "url": "https://github.com/fw876/helloworld/releases/download/v196.1/luci-app-ssr-plus_196-r1_all.ipk"
           }
         ]
       }
@@ -875,6 +1439,774 @@
           {
             "name": "x86_64-openwrt-25.12.tar.gz",
             "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r5/x86_64-openwrt-25.12.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-aarch64_cortex-a53.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-aarch64_cortex-a53.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-aarch64_cortex-a72.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-aarch64_cortex-a72.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-aarch64_cortex-a76.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-aarch64_cortex-a76.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-aarch64_generic.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-aarch64_generic.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_arm1176jzf-s_vfp.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_arm1176jzf-s_vfp.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_arm926ej-s.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_arm926ej-s.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a15_neon-vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a15_neon-vfpv4.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a5_vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a5_vfpv4.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a7.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a7.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a7_neon-vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a7_neon-vfpv4.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a7_vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a7_vfpv4.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a8_vfpv3.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a8_vfpv3.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a9.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a9.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a9_neon.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a9_neon.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_cortex-a9_vfpv3-d16.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_cortex-a9_vfpv3-d16.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_fa526.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_fa526.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-arm_xscale.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-arm_xscale.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-i386_pentium-mmx.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-i386_pentium-mmx.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-i386_pentium4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-i386_pentium4.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-loongarch64_generic.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-loongarch64_generic.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mips64el_mips64r2.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mips64el_mips64r2.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mips64_mips64r2.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mips64_mips64r2.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mips64_octeonplus.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mips64_octeonplus.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mipsel_24kc.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mipsel_24kc.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mipsel_24kc_24kf.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mipsel_24kc_24kf.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mipsel_74kc.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mipsel_74kc.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mipsel_mips32.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mipsel_mips32.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mips_24kc.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mips_24kc.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mips_4kec.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mips_4kec.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-mips_mips32.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-mips_mips32.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-riscv64_riscv64.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-riscv64_riscv64.tar.gz"
+          },
+          {
+            "name": "openwrt-24.10-x86_64.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/openwrt-24.10-x86_64.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-aarch64_cortex-a53.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-aarch64_cortex-a53.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-aarch64_cortex-a72.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-aarch64_cortex-a72.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-aarch64_cortex-a76.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-aarch64_cortex-a76.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-aarch64_generic.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-aarch64_generic.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_arm1176jzf-s_vfp.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_arm1176jzf-s_vfp.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_arm926ej-s.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_arm926ej-s.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a15_neon-vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a15_neon-vfpv4.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a5_vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a5_vfpv4.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a7.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a7.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a7_neon-vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a7_neon-vfpv4.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a7_vfpv4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a7_vfpv4.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a8_vfpv3.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a8_vfpv3.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a9.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a9.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a9_neon.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a9_neon.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_cortex-a9_vfpv3-d16.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_cortex-a9_vfpv3-d16.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_fa526.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_fa526.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-arm_xscale.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-arm_xscale.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-i386_pentium-mmx.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-i386_pentium-mmx.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-i386_pentium4.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-i386_pentium4.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-loongarch64_generic.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-loongarch64_generic.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mips64el_mips64r2.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mips64el_mips64r2.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mips64_mips64r2.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mips64_mips64r2.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mips64_octeonplus.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mips64_octeonplus.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mipsel_24kc.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mipsel_24kc.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mipsel_24kc_24kf.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mipsel_24kc_24kf.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mipsel_74kc.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mipsel_74kc.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mipsel_mips32.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mipsel_mips32.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mips_24kc.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mips_24kc.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mips_4kec.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mips_4kec.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-mips_mips32.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-mips_mips32.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-riscv64_riscv64.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-riscv64_riscv64.tar.gz"
+          },
+          {
+            "name": "SNAPSHOT-x86_64.tar.gz",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.4-r1/SNAPSHOT-x86_64.tar.gz"
+          },
+          {
+            "name": "luci-app-mosdns_1.6.11-r1_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/luci-app-mosdns_1.6.11-r1_all.ipk"
+          },
+          {
+            "name": "luci-i18n-mosdns-zh-cn_25.061.23891.2523534_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/luci-i18n-mosdns-zh-cn_25.061.23891.2523534_all.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_aarch64_cortex-a53.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_aarch64_cortex-a53.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_aarch64_cortex-a72.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_aarch64_cortex-a72.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_aarch64_cortex-a76.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_aarch64_cortex-a76.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_aarch64_generic.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_aarch64_generic.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_arm1176jzf-s_vfp.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_arm1176jzf-s_vfp.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_arm926ej-s.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_arm926ej-s.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a15_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a15_neon-vfpv4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a5_vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a5_vfpv4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a7.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a7.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a7_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a7_neon-vfpv4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a7_vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a7_vfpv4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a8_vfpv3.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a8_vfpv3.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a9.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a9.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a9_neon.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a9_neon.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_cortex-a9_vfpv3-d16.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_cortex-a9_vfpv3-d16.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_fa526.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_fa526.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_arm_xscale.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_arm_xscale.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_i386_pentium-mmx.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_i386_pentium-mmx.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_i386_pentium4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_i386_pentium4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_loongarch64_generic.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_loongarch64_generic.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mips64el_mips64r2.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mips64el_mips64r2.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mips64_mips64r2.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mips64_mips64r2.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mips64_octeonplus.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mips64_octeonplus.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mipsel_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mipsel_24kc.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mipsel_24kc_24kf.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mipsel_24kc_24kf.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mipsel_74kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mipsel_74kc.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mipsel_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mipsel_mips32.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mips_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mips_24kc.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mips_4kec.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mips_4kec.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_mips_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_mips_mips32.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_riscv64_riscv64.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_riscv64_riscv64.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-r4_x86_64.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/mosdns_5.3.3-r4_x86_64.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_aarch64_cortex-a53.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_aarch64_cortex-a53.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_aarch64_cortex-a72.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_aarch64_cortex-a72.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_aarch64_cortex-a76.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_aarch64_cortex-a76.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_aarch64_generic.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_aarch64_generic.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_arm1176jzf-s_vfp.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_arm1176jzf-s_vfp.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_arm926ej-s.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_arm926ej-s.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a15_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a15_neon-vfpv4.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a5_vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a5_vfpv4.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a7.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a7.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a7_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a7_neon-vfpv4.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a7_vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a7_vfpv4.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a8_vfpv3.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a8_vfpv3.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a9.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a9.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a9_neon.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a9_neon.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a9_vfpv3-d16.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_cortex-a9_vfpv3-d16.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_fa526.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_fa526.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_arm_xscale.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_arm_xscale.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_i386_pentium-mmx.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_i386_pentium-mmx.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_i386_pentium4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_i386_pentium4.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_loongarch64_generic.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_loongarch64_generic.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mips64el_mips64r2.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mips64el_mips64r2.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mips64_mips64r2.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mips64_mips64r2.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mips64_octeonplus.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mips64_octeonplus.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mipsel_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mipsel_24kc.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mipsel_24kc_24kf.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mipsel_24kc_24kf.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mipsel_74kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mipsel_74kc.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mipsel_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mipsel_mips32.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mips_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mips_24kc.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mips_4kec.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mips_4kec.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_mips_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_mips_mips32.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_riscv64_riscv64.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_riscv64_riscv64.ipk"
+          },
+          {
+            "name": "v2dat_2022.12.15.47b8ee51-r2_x86_64.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2dat_2022.12.15.47b8ee51-r2_x86_64.ipk"
+          },
+          {
+            "name": "v2ray-geoip_2025.03.08-r1_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2ray-geoip_2025.03.08-r1_all.ipk"
+          },
+          {
+            "name": "v2ray-geosite_2025.03.08-r1_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-r4/v2ray-geosite_2025.03.08-r1_all.ipk"
+          },
+          {
+            "name": "luci-app-mosdns_1.6.8_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/luci-app-mosdns_1.6.8_all.ipk"
+          },
+          {
+            "name": "luci-i18n-mosdns-zh-cn_git-24.246.09619-49e5a0d_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/luci-i18n-mosdns-zh-cn_git-24.246.09619-49e5a0d_all.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_aarch64_cortex-a53.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_aarch64_cortex-a53.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_aarch64_cortex-a72.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_aarch64_cortex-a72.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_aarch64_generic.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_aarch64_generic.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_arm1176jzf-s_vfp.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_arm1176jzf-s_vfp.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_arm926ej-s.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_arm926ej-s.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a15_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a15_neon-vfpv4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a5_vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a5_vfpv4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a7.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a7.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a7_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a7_neon-vfpv4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a8_vfpv3.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a8_vfpv3.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a9.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a9.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a9_neon.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a9_neon.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_cortex-a9_vfpv3-d16.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_cortex-a9_vfpv3-d16.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_fa526.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_fa526.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_mpcore.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_mpcore.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_arm_xscale.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_arm_xscale.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_i386_pentium-mmx.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_i386_pentium-mmx.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_i386_pentium4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_i386_pentium4.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mips64_octeonplus.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mips64_octeonplus.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mipsel_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mipsel_24kc.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mipsel_24kc_24kf.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mipsel_24kc_24kf.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mipsel_74kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mipsel_74kc.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mipsel_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mipsel_mips32.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mips_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mips_24kc.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mips_4kec.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mips_4kec.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_mips_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_mips_mips32.ipk"
+          },
+          {
+            "name": "mosdns_5.3.3-3_x86_64.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/mosdns_5.3.3-3_x86_64.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_aarch64_cortex-a53.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_aarch64_cortex-a53.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_aarch64_cortex-a72.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_aarch64_cortex-a72.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_aarch64_generic.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_aarch64_generic.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_arm1176jzf-s_vfp.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_arm1176jzf-s_vfp.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_arm926ej-s.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_arm926ej-s.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a15_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a15_neon-vfpv4.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a5_vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a5_vfpv4.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a7.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a7.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a7_neon-vfpv4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a7_neon-vfpv4.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a8_vfpv3.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a8_vfpv3.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a9.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a9.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a9_neon.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a9_neon.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_cortex-a9_vfpv3-d16.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_cortex-a9_vfpv3-d16.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_fa526.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_fa526.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_mpcore.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_mpcore.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_arm_xscale.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_arm_xscale.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_i386_pentium-mmx.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_i386_pentium-mmx.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_i386_pentium4.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_i386_pentium4.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mips64_octeonplus.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mips64_octeonplus.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mipsel_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mipsel_24kc.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mipsel_24kc_24kf.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mipsel_24kc_24kf.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mipsel_74kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mipsel_74kc.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mipsel_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mipsel_mips32.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mips_24kc.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mips_24kc.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mips_4kec.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mips_4kec.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_mips_mips32.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_mips_mips32.ipk"
+          },
+          {
+            "name": "v2dat_2022-12-15-47b8ee51-1_x86_64.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2dat_2022-12-15-47b8ee51-1_x86_64.ipk"
+          },
+          {
+            "name": "v2ray-geoip_2024-12-17-1_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2ray-geoip_2024-12-17-1_all.ipk"
+          },
+          {
+            "name": "v2ray-geoip_2024-12-18-1_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2ray-geoip_2024-12-18-1_all.ipk"
+          },
+          {
+            "name": "v2ray-geosite_2024-12-17-1_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2ray-geosite_2024-12-17-1_all.ipk"
+          },
+          {
+            "name": "v2ray-geosite_2024-12-18-1_all.ipk",
+            "url": "https://github.com/sbwml/luci-app-mosdns/releases/download/v5.3.3-3/v2ray-geosite_2024-12-18-1_all.ipk"
           }
         ]
       }
@@ -899,6 +2231,46 @@
           {
             "name": "luci-theme-argon-2.4.3-r20250722.apk",
             "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-theme-argon-2.4.3-r20250722.apk"
+          },
+          {
+            "name": "luci-theme-argon-2.3.2-r20250207.apk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.2/luci-theme-argon-2.3.2-r20250207.apk"
+          },
+          {
+            "name": "luci-theme-argon_2.3.2-r20250207_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.2/luci-theme-argon_2.3.2-r20250207_all.ipk"
+          },
+          {
+            "name": "luci-app-argon-config_0.9-20220424_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.4/luci-app-argon-config_0.9-20220424_all.ipk"
+          },
+          {
+            "name": "luci-i18n-argon-config-zh-cn_0.9-20220424_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.4/luci-i18n-argon-config-zh-cn_0.9-20220424_all.ipk"
+          },
+          {
+            "name": "luci-theme-argon_1.8.4-20241221_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.4/luci-theme-argon_1.8.4-20241221_all.ipk"
+          },
+          {
+            "name": "luci-theme-argon_1.8.3-20230710_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.3/luci-theme-argon_1.8.3-20230710_all.ipk"
+          },
+          {
+            "name": "luci-theme-argon_1.8.2-20230609_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.2/luci-theme-argon_1.8.2-20230609_all.ipk"
+          },
+          {
+            "name": "luci-theme-argon_2.3.1_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.1/luci-theme-argon_2.3.1_all.ipk"
+          },
+          {
+            "name": "luci-theme-argon_1.8.1-20230527_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.1/luci-theme-argon_1.8.1-20230527_all.ipk"
+          },
+          {
+            "name": "luci-theme-argon_1.8.0-20230521_all.ipk",
+            "url": "https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.0/luci-theme-argon_1.8.0-20230521_all.ipk"
           }
         ]
       }

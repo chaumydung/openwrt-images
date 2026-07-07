@@ -15,49 +15,72 @@ const nikki = {
   latest: { version: null, assets: [] },
 } as const
 
-const release = {
-  tag_name: 'v0.47.116',
-  assets: [
-    { name: 'luci-app-openclash-0.47.116.apk', browser_download_url: 'https://x/luci-app-openclash-0.47.116.apk' },
-    { name: 'luci-app-openclash_0.47.116_all.ipk', browser_download_url: 'https://x/luci-app-openclash_0.47.116_all.ipk' },
-  ],
-}
-
-const tarballRelease = {
-  tag_name: 'v1.26.1',
-  assets: [
-    { name: 'nikki_aarch64_cortex-a53-openwrt-25.12.tar.gz', browser_download_url: 'https://x/nikki_aarch64_cortex-a53-openwrt-25.12.tar.gz' },
-    { name: 'nikki_aarch64_cortex-a53-SNAPSHOT.tar.gz', browser_download_url: 'https://x/nikki_aarch64_cortex-a53-SNAPSHOT.tar.gz' },
-  ],
-}
+// Two recent releases where the newest dropped a format the older still has (the argon case):
+// newest ships only .apk; the previous release still ships the _all.ipk.
+const recentReleases = [
+  { tag_name: 'v2.4.3', assets: [{ name: 'luci-theme-argon-2.4.3.apk', browser_download_url: 'https://x/luci-theme-argon-2.4.3.apk' }] },
+  {
+    tag_name: 'v2.3.2',
+    assets: [
+      { name: 'luci-theme-argon-2.3.2.apk', browser_download_url: 'https://x/luci-theme-argon-2.3.2.apk' },
+      { name: 'luci-theme-argon_2.3.2_all.ipk', browser_download_url: 'https://x/luci-theme-argon_2.3.2_all.ipk' },
+    ],
+  },
+]
 
 describe('recordReleaseAssets', () => {
-  it('records every asset verbatim, without picking one', () => {
-    const out = recordReleaseAssets(release)
-    expect(out).toEqual([
-      { name: 'luci-app-openclash-0.47.116.apk', url: 'https://x/luci-app-openclash-0.47.116.apk' },
-      { name: 'luci-app-openclash_0.47.116_all.ipk', url: 'https://x/luci-app-openclash_0.47.116_all.ipk' },
+  it('unions assets across releases newest-first, deduped by name', () => {
+    const dupd = [
+      { tag_name: 'v2', assets: [{ name: 'a.apk', browser_download_url: 'https://x/v2/a.apk' }] },
+      { tag_name: 'v1', assets: [
+        { name: 'a.apk', browser_download_url: 'https://x/v1/a.apk' }, // duplicate name — v2 (newer) wins
+        { name: 'a_all.ipk', browser_download_url: 'https://x/v1/a_all.ipk' },
+      ] },
+    ]
+    expect(recordReleaseAssets(dupd)).toEqual([
+      { name: 'a.apk', url: 'https://x/v2/a.apk' },
+      { name: 'a_all.ipk', url: 'https://x/v1/a_all.ipk' },
     ])
   })
 })
 
 describe('syncCommunity', () => {
-  it('refreshes github-release latest with the full asset list and leaves feed components untouched', async () => {
+  it('queries recent releases, unions assets (both apk and older ipk) and leaves feed components untouched', async () => {
+    const argon = { ...openclash, id: 'argon-theme', githubRepo: 'jerrykuku/luci-theme-argon', packages: ['luci-theme-argon'] }
     const feedComp = { ...openclash, id: 'smartdns', sourceType: 'feed',
       feed: { name: 'p', urlTemplate: 'https://f/{arch}', checkSignature: false } } as never
-    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, json: async () => release })
-    const out = await syncCommunity([openclash as never, feedComp], fetchImpl)
-    expect(out[0].latest.version).toBe('v0.47.116')
-    expect(out[0].latest.assets).toEqual(recordReleaseAssets(release))
-    expect(fetchImpl).toHaveBeenCalledWith('https://api.github.com/repos/vernesong/OpenClash/releases/latest', expect.anything())
+    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, json: async () => recentReleases })
+    const out = await syncCommunity([argon as never, feedComp], fetchImpl)
+    expect(out[0].latest.version).toBe('v2.4.3') // newest non-draft release
+    // both the newest .apk and the older _all.ipk are present, so both build lines resolve
+    const names = out[0].latest.assets.map((a) => a.name)
+    expect(names).toContain('luci-theme-argon-2.4.3.apk')
+    expect(names).toContain('luci-theme-argon_2.3.2_all.ipk')
+    expect(fetchImpl).toHaveBeenCalledWith(
+      'https://api.github.com/repos/jerrykuku/luci-theme-argon/releases?per_page=8',
+      expect.anything(),
+    )
     expect(out[1].latest.version).toBeNull() // feed passthrough
   })
 
+  it('skips draft releases when choosing the version', async () => {
+    const withDraft = [{ tag_name: 'v9-draft', draft: true, assets: [] }, ...recentReleases]
+    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, json: async () => withDraft })
+    const out = await syncCommunity([{ ...openclash, id: 'argon-theme', githubRepo: 'jerrykuku/luci-theme-argon' } as never], fetchImpl)
+    expect(out[0].latest.version).toBe('v2.4.3')
+  })
+
   it('also refreshes tarball components', async () => {
-    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, json: async () => tarballRelease })
+    const tarballReleases = [{
+      tag_name: 'v1.26.1',
+      assets: [
+        { name: 'nikki_aarch64_cortex-a53-openwrt-25.12.tar.gz', browser_download_url: 'https://x/nikki_aarch64_cortex-a53-openwrt-25.12.tar.gz' },
+        { name: 'nikki_aarch64_cortex-a53-SNAPSHOT.tar.gz', browser_download_url: 'https://x/nikki_aarch64_cortex-a53-SNAPSHOT.tar.gz' },
+      ],
+    }]
+    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, json: async () => tarballReleases })
     const out = await syncCommunity([nikki as never], fetchImpl)
     expect(out[0].latest.version).toBe('v1.26.1')
-    expect(out[0].latest.assets).toEqual(recordReleaseAssets(tarballRelease))
-    expect(fetchImpl).toHaveBeenCalledWith('https://api.github.com/repos/nikkinikki-org/OpenWrt-nikki/releases/latest', expect.anything())
+    expect(out[0].latest.assets).toEqual(recordReleaseAssets(tarballReleases))
   })
 })
