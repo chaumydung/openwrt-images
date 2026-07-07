@@ -1,9 +1,0 @@
-{
-  "_purpose": "Prebuilt-pipeline config (PRD 5), consumed by scripts/prebuilt/gen-matrix.ts and .github/workflows/prebuilt.yml. devices: 'featured' references data/seo/featured-devices.json. defaultPackages per distro stay neutral (LuCI + HTTPS only, no proxy plugins) — extend per distro here as needed.",
-  "devices": "featured",
-  "distros": [
-    { "id": "openwrt", "defaultPackages": ["luci", "luci-ssl"] },
-    { "id": "immortalwrt", "defaultPackages": ["luci", "luci-ssl"] }
-  ],
-  "retentionRuns": 3
-}

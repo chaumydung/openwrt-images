@@ -1,5 +1,5 @@
 {
-  "_purpose": "Featured device slugs (must exist in data/catalog/devices.json). Drives sitemap wave 1 (PRD 4.3, docs/SEO.md 5), homepage popular-device links, and the prebuilt-image pipeline device list. Guarded by tests/lib/seo.test.ts.",
+  "_purpose": "Featured device slugs (must exist in data/catalog/devices.json). Drives sitemap wave 1 (PRD 4.3, docs/SEO.md 5) and homepage popular-device links. Guarded by tests/lib/seo.test.ts.",
   "featured": [
     "generic-x86-64",
     "generic-x86",

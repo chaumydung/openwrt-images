@@ -77,7 +77,7 @@ export default function Home() {
           <p className={kickerClass}>02 — Featured devices</p>
           <h2 className={h2Class}>Featured devices</h2>
           <p className="mt-3 max-w-3xl text-base/7 text-slate-600">
-            Popular routers and boards with daily prebuilt images and full custom-build support.
+            Popular routers and boards with official firmware downloads and full custom-build support.
           </p>
           {featuredGroups.map((group) => (
             <div key={group.category} className="mt-8">

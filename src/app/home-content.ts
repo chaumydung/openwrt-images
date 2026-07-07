@@ -62,7 +62,7 @@ export const SECTIONS: CopySection[] = [
     paragraphs: [
       'Two distributions in one OpenWrt online builder. The official firmware selector covers OpenWrt only; this OpenWrt online builder also covers ImmortalWrt and its larger package feeds, so you can compare both options for your device on one page.',
       'No local build environment. Running ImageBuilder yourself requires a Linux x86_64 host, several gigabytes of disk, and command-line work. The OpenWrt online builder removes that setup entirely: the build runs server-side and you only download the result.',
-      'Prebuilt images updated daily. For featured devices, the OpenWrt online builder publishes default prebuilt images every day, free to download without an account, each with a sha256 checksum.',
+      'Official images, no account needed. Default firmware for every device links straight to the official OpenWrt and ImmortalWrt download mirrors, free to download without an account and verified by sha256. The OpenWrt online builder adds custom builds on top when you want a tailored package set.',
       'Transparent builds. Every OpenWrt online builder job returns its complete build log, so package dependency conflicts or an image that exceeds the flash size of the device are diagnosed from evidence, not guesswork.',
     ],
   },
@@ -92,7 +92,7 @@ export const FAQ: { question: string; answer: string }[] = [
   {
     question: 'Is the OpenWrt online builder free?',
     answer:
-      'Yes. Downloading prebuilt default images requires no account and has no download limit. Custom builds in the OpenWrt online builder require a free GitHub sign-in and are covered by a daily quota. There is no paid tier in the current version.',
+      'Yes. Default firmware images download straight from the official mirrors with no account and no download limit. Custom builds in the OpenWrt online builder require a free GitHub sign-in and are covered by a daily quota. There is no paid tier in the current version.',
   },
   {
     question: 'How many custom builds can I run per day?',
